@@ -2,13 +2,13 @@
   "compilerOptions": {
     "incremental": true,
     "noEmit": true,
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext", //commonjs destroys 'dynamic imports' which is used for code splitting
     "noImplicitAny": false,
     "preserveConstEnums": true,
     "baseUrl": "./app",
     "jsx": "react", // process JSX
-    "lib": ["dom", "es5", "es6", "es7", "es2017"],
+    "lib": ["dom", "esnext"],
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
     "esModuleInterop": true,
     "allowJs": true, // include js files
@@ -26,8 +26,9 @@
     "strictFunctionTypes": false,
     "pretty": true,
     "removeComments": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "downlevelIteration": true
   },
-  "include": ["app/**/*", "internals/templates/**/*"],
+  "include": ["app/**/*", "internals/templates/**/*", "_Snippets/**/*"],
   "exclude": ["node_modules"]
 }

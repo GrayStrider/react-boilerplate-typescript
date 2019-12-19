@@ -32,7 +32,7 @@
     "clean:all": "npm run analyze:clean && npm run test:clean && npm run build:clean",
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:ts",
-    "lint:css": "stylelint './app/**/*.{js,ts}'",
+    "lint:css": "",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
     "lint:js": "npm run lint:eslint -- . ",
@@ -44,7 +44,7 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write \"**/*.{js, ts, tsx, jsx}\""
   },
   "eslintIgnore": [
     "**/*.ts",
@@ -204,7 +204,7 @@
     "tslint-loader": "3.5.4",
     "tslint-react": "4.0.0",
     "tslint-react-hooks": "2.2.1",
-    "typescript": "3.5.1",
+    "typescript": "^3.7.3",
     "typescript-plugin-styled-components": "1.4.3",
     "url-loader": "2.0.1",
     "webpack": "4.35.3",
