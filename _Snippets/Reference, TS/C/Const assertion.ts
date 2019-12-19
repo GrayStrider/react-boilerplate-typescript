@@ -1,34 +1,34 @@
-export {}
+export {};
 
 // Works with no types referenced or declared.
 // We only needed a single const assertion.
 function getShapes() {
   return [
     { kind: 'circle', radius: 100 },
-    { kind: 'square', sideLength: 50 }
-  ] as const
+    { kind: 'square', sideLength: 50 },
+  ] as const;
 }
 
 for (const shape of getShapes()) {
   if (shape.kind === 'circle') {
-    const radius: number = shape.radius // throws error without as const
+    const radius: number = shape.radius; // throws error without as const
   } else {
-    const length: number = shape.sideLength
+    const length: number = shape.sideLength;
   }
 }
 
-const x_ = { x: 'test' } as const // readonly
-console.log(typeof x_.x)
+const ORIGIN = {
+  x: 0,
+  y: 0,
+} as const;
+// equivalent to
+const ORIGIN2: {
+  readonly x: 0;
+  readonly y: 0;
+} = {
+  x: 0,
+  y: 0,
+};
 
-/**
- * makes tuple types
- */
-const arr = ['string'] as const
-console.log(arr)
-
-const str: 'string!' = 'string!' // will not widen
-const str2 = 'string!' as const
-
-console.log(typeof str2) // type 'string!'
-const str4: string = 'string!' as const
-console.log(str4, str)
+const vec = [0, 2] as const; // readonly [0, 2]
+const vec2 = [0, 2]; // number[]
