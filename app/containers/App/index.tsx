@@ -18,6 +18,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
+import { MainCSS } from '../../pages';
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -41,6 +42,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
+        <Route path="/css" component={MainCSS} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
