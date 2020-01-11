@@ -94,12 +94,12 @@ console.log(rangeSpreadArray(10))
 export const Name = String.withConstraint(x => (
   /^[A-Z][a-z]+$/.test(x)
   && (x.length > 1 && x.length < 21))
-  || `${x} doesn't match required format: "Abcd", 2-20 chars`)
+  ?? `${x} doesn't match required format: "Abcd", 2-20 chars`)
 
 const Student = Record({
   grade: Number.withConstraint(x =>
     (x >= 0 && x <= 15)
-    || `${x} doesn't satisfy constraint: 0 >= x <= 15`),
+    ?? `${x} doesn't satisfy constraint: 0 >= x <= 15`),
 
   name: Name,
 })

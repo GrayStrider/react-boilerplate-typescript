@@ -1,25 +1,8 @@
 import * as RA from 'ramda-adjunct'
 import * as R from 'ramda'
+import { append, complement, find, forEach, map } from 'ramda'
 import _ from 'lodash'
-
-type User = {
-  occupation: string;
-  traits?: string[];
-  name: string;
-  age?: number;
-  nested?: {
-    nested2?: {
-      nested3?: string
-    }
-  }
-}
-
-const user = {
-  name: 'Sam',
-  age: 25,
-  occupation: 'Unemployed',
-  traits: ['Shy'],
-}
+import { User } from './Models'
 
 const users: User[] = [
   {
@@ -34,7 +17,12 @@ const users: User[] = [
     occupation: 'Developer',
     traits: ['Likes to sleep'],
   },
-  user,
+  {
+    name: 'Sam',
+    age: 25,
+    occupation: 'Unemployed',
+    traits: ['Shy'],
+  },
 ]
 
 const array = [1, 2, 3]
@@ -59,9 +47,6 @@ console.log(R.equals(a, b))
 console.log(R.identical(a, b))
 console.log(R.identical(c, d))
 
-
-const getRange = R.juxt([Math.min, Math.max])
-console.log(getRange(3, 4, 9, -3))
 
 console.log(RA.list(1, 2, 3))
 // right-to-left
@@ -141,7 +126,12 @@ const user2: User = {
 }
 
 console.log(
-  getTraits(user))
+  getTraits({
+    name: 'Sam',
+    age: 25,
+    occupation: 'Unemployed',
+    traits: ['Shy'],
+  }))
 
 console.log(R.pipe(Math.trunc, () => NaN)(10.2))
 
@@ -158,3 +148,19 @@ const foo2 = (user: User) =>
 console.log(
   getPropOrThrow(user2, 'nested'),
 )
+
+
+const logger = forEach(console.log)
+const appendString = map((value: number) => value + '_')
+const arr = [1, 2, 3]
+logger(arr)
+console.log(appendString(arr))
+
+//----
+
+const isEven = (x: number) => x % 2 === 0
+const isOdd = complement(isEven)
+
+find(isOdd, [1, 2, 3, 4])
+
+console.log(append('_')([]))

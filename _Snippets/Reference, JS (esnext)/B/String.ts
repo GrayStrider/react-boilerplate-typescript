@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export {}
 const STR = ' test123TEST 123ee '
 
@@ -15,7 +17,7 @@ console.log(STR[3])
 console.log(STR.split(' '))
 console.log(STR.slice(0, 3))
 console.log(STR.slice(-4, -2))
-console.log(STR.slice(4, 2)) // from higher to lower; but,
+console.log(STR.slice(4, 2)) // from higher to lower, so returns ''; but,
 console.log(STR.substring(4, 2)) // works
 console.log(STR.substr(4, 2)) // from to length
 console.log(STR.trim())
@@ -24,9 +26,9 @@ console.log(STR.trimEnd())
 console.log(STR.repeat(3))
 console.log(STR.toUpperCase())
 console.log(STR.toLowerCase())
-console.log(STR.padEnd(25, '-'))
+console.log(STR.padEnd(30, '...'))
+console.log(_.truncate(STR, {length: 10}))
 console.log(STR.padStart(25, '-'))
-
 /** iteration */
 for (const strElement of STR) console.log(strElement)
 console.log([...STR])

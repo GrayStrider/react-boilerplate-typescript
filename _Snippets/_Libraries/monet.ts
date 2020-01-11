@@ -1,4 +1,4 @@
-import { Maybe, None, Some, Right, Either, Left } from 'monet'
+import { Maybe, None, Some, Right, Either, Left } from '../_Snippets/_Libraries/monet'
 
 
 const foo = (arg: Maybe<string>) =>

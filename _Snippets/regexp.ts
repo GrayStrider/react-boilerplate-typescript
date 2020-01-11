@@ -1,3 +1,5 @@
+import * as RA from 'ramda-adjunct'
+
 export default {}
 
 /**
@@ -33,6 +35,10 @@ console.log(obj
   .map(item => item.data)
   .join('-'))
 
+
+RA.escapeRegExp(
+  '[ramda-adjunct](https://github.com/char0n/ramda-adjunct)');
+//=> '\[ramda\-adjunct\]\(https://github\.com/char0n/ramda\-adjunct\)'
 
 const test = '12weord test'
 // Non-capturing group:
@@ -103,3 +109,8 @@ console.log(
 const str = '1 2 3 tes tes F F'
 const match = str.match(/(<numbers>\d)/g)
 
+RA.replaceAll('ac', 'ef', 'ac ab ac ab'); //=> 'ef ab ef ab'
+RA.replaceAll('', '_', 'xxx'); //=> '_x_x_x_'
+RA.replaceAll(/x/g, 'v', 'xxx'); //=> 'vvv'
+// RA.replaceAll(/x/, 'v', 'xxx')
+//=> TypeError, only global regexes

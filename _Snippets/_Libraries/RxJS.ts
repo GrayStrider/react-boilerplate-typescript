@@ -2,17 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 import Promise from 'bluebird'
 import { from, fromEvent, interval, of, timer } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
-import {
-  auditTime,
-  bufferCount,
-  concatMap,
-  delay,
-  endWith,
-  filter,
-  map,
-  take,
-  tap
-} from 'rxjs/operators'
+import { auditTime, bufferCount, concatMap, delay, endWith, filter, map, take, tap } from 'rxjs/operators'
 import { XMLHttpRequest } from 'xmlhttprequest'
 
 //================================================================================
@@ -155,7 +145,7 @@ const promise = Promise
 const promise2 =
   new Promise((resolve, reject) => {
     console.log('vaiting in Promise...')
-    setTimeout(resolve('delayed with promise'), 4000)
+    setTimeout(() => resolve('delayed with promise'), 4000)
   })
 
 // console.time()

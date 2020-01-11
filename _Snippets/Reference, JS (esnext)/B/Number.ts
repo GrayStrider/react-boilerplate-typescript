@@ -1,3 +1,5 @@
+import * as RA from 'ramda-adjunct'
+
 const NUM = 1234.123
 
 /**
@@ -12,7 +14,13 @@ console.log(parseFloat('120.5 px'))
 console.log(parseInt('120.5 px'))
 console.log(parseInt('a35'))
 
+console.log(RA.divideNum(2)(10))
+console.log(RA.subtractNum(2)(10))
+
 console.log(Math.ceil(NUM))
+console.log(RA.ceil(NUM))
+
+
 console.log(Math.floor(NUM))
 console.log(Math.round(NUM))
 

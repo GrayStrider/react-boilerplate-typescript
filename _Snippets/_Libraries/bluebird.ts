@@ -1,5 +1,5 @@
 export {}
-import Promise from 'bluebird'
+import {Promise} from 'bluebird'
 
 /**
  * basic promise template
