@@ -7,12 +7,13 @@ import { render, cleanup, fireEvent } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 
-import * as appActions from 'containers/App/actions';
-import configureStore from '../../../configureStore';
+import * as appActions from '@/containers/App/actions';
 import HomePage from '../index';
 import { initialState } from '../reducer';
 import { changeUsername } from '../actions';
-import history from '../../../utils/history';
+import configureStore from '@/configureStore'
+import history from '@/utils/history';
+
 
 jest.mock('containers/App/actions');
 

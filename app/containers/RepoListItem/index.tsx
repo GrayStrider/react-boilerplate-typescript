@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedNumber } from 'react-intl';
 
-import { makeSelectCurrentUser } from 'containers/App/selectors';
-import ListItem from 'components/ListItem';
+import { makeSelectCurrentUser } from '@/containers/App/selectors';
+import ListItem from '@/components/ListItem';
 import IssueIcon from './IssueIcon';
 import IssueLink from './IssueLink';
 import RepoLink from './RepoLink';
@@ -22,7 +22,8 @@ interface OwnProps {
 }
 
 // tslint:disable-next-line:no-empty-interface
-interface DispatchProps {}
+interface DispatchProps {
+}
 
 type Props = DispatchProps & OwnProps;
 const stateSelector = createStructuredSelector({
@@ -42,16 +43,16 @@ export default function RepoListItem({ item }: Props) {
   // Put together the content of the repository
   const content = (
     <Wrapper>
-      <RepoLink href={item.html_url} target="_blank">
+      <RepoLink href={item.html_url} target='_blank'>
         {nameprefix + item.name}
       </RepoLink>
-      <IssueLink href={`${item.html_url}/issues`} target="_blank">
-        <IssueIcon />
-        <FormattedNumber value={item.open_issues_count} />
+      <IssueLink href={`${item.html_url}/issues`} target='_blank'>
+        <IssueIcon/>
+        <FormattedNumber value={item.open_issues_count}/>
       </IssueLink>
     </Wrapper>
   );
 
   // Render the content into a list item
-  return <ListItem key={`repo-list-item-${item.full_name}`} item={content} />;
+  return <ListItem key={`repo-list-item-${item.full_name}`} item={content}/>;
 }

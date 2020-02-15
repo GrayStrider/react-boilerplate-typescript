@@ -1,6 +1,6 @@
-import styled from 'styles/styled-components';
+import styled from '@/styles/styled-components';
 
-import NormalImg from 'components/Img';
+import NormalImg from '@/components/Img';
 
 const Img = styled(NormalImg)`
   width: 100%;

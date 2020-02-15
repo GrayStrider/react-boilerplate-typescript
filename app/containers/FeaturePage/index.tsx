@@ -7,7 +7,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
-import H1 from 'components/H1';
+import H1 from '@/components/H1';
 import messages from './messages';
 import List from './List';
 import ListItem from './ListItem';

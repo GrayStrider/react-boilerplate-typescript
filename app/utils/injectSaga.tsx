@@ -3,7 +3,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useStore } from 'react-redux';
 
 import { getInjectors } from './sagaInjectors';
-import { InjectSagaParams, InjectedStore } from 'types';
+import { InjectSagaParams, InjectedStore } from '@/types';
 
 /**
  * Dynamically injects a saga, passes component's props as saga arguments
