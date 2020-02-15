@@ -8,14 +8,6 @@ module.exports = {
     '!app/global-styles.ts',
     '!app/*/*/Loadable.{js,jsx,ts,tsx}',
   ],
-  coverageThreshold: {
-    global: {
-      statements: 98,
-      branches: 91,
-      functions: 98,
-      lines: 98,
-    },
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   globals: {
     'ts-jest': {
