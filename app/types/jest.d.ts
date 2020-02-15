@@ -1,4 +1,4 @@
-import jest from 'jest'
+import jest from 'app/types/jest'
 
 declare global {
 	namespace jest {
