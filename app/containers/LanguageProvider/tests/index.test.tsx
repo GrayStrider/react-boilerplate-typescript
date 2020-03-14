@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import LanguageProvider from '../index'
 import configureStore from '@/utils/redux-components/configureStore'
 
-import {translationMessages} from 'app/translations/i18n'
+import {translationMessages} from '@/translations/i18n'
 import history from '../../../utils/history'
 
 const messages = defineMessages({

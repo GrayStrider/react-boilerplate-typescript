@@ -7,7 +7,7 @@ import * as actions from '../../LanguageProvider/actions'
 import LanguageProvider from '../../LanguageProvider'
 
 import configureStore from '@/utils/redux-components/configureStore'
-import {translationMessages} from 'app/translations/i18n'
+import {translationMessages} from '@/translations/i18n'
 import {action} from 'typesafe-actions'
 import history from '../../../utils/history'
 

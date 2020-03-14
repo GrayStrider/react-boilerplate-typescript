@@ -12,7 +12,7 @@ import {
   getInjectors,
   injectSagaFactory,
   ejectSagaFactory,
-} from 'app/utils/redux-components/sagaInjectors'
+} from '@/utils/redux-components/sagaInjectors'
 import {DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT} from '../constants'
 
 function* testSaga() {

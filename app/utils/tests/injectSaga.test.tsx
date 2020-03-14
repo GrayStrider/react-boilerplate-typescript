@@ -9,8 +9,8 @@ import React from 'react'
 import {Provider} from 'react-redux'
 
 import configureStore from '@/utils/redux-components/configureStore'
-import injectSaga, {useInjectSaga} from 'app/utils/redux-components/injectSaga'
-import {getInjectors} from 'app/utils/redux-components/sagaInjectors'
+import injectSaga, {useInjectSaga} from '@/utils/redux-components/injectSaga'
+import {getInjectors} from '@/utils/redux-components/sagaInjectors'
 
 
 import {createMemoryHistory} from 'history'

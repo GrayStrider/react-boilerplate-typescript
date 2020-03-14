@@ -1,4 +1,4 @@
-import {formatTranslationMessages} from 'app/translations/i18n'
+import {formatTranslationMessages} from '@/translations/i18n'
 
 jest.mock('../translations/en.json', () => ({
   message1: 'default message',
