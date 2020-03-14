@@ -1,12 +1,21 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["app/*"],
+      "@config": ["config/export"],
+      "@internals": ["internals"],
+
+      "app/*": ["app/*"],
+      "config/*": ["config/*"],
+      "internals/*": ["internals/*"]
+    },
     "incremental": true,
 //    "noEmit": true, // Option 'noEmit' cannot be specified with option 'incremental'.
     "target": "esnext",
     "module": "esnext", //commonjs destroys 'dynamic imports' which is used for code splitting
     "noImplicitAny": false,
     "preserveConstEnums": true,
-    "baseUrl": "./app",
     "jsx": "react", // process JSX
     "lib": ["dom", "esnext"],
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
@@ -29,6 +38,5 @@
     "sourceMap": true,
     "downlevelIteration": true
   },
-  "include": ["app/**/*", "internals/templates/**/*", "_Snippets/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["app/**/*", "internals/templates/**/*", "_Snippets/**/*"]
 }

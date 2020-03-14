@@ -1,7 +1,7 @@
 const { pathsToModuleNameMapper } = require('ts-jest/utils')
 const fs = require('fs')
 const { parse } = require('comment-json')
-const tsconfig = fs.readFileSync('tsconfig.json').toString()
+const tsconfig = fs.readFileSync('tsconfig.json', 'utf8')
 const { compilerOptions: {paths} } = parse(tsconfig, null, true)
 
 module.exports = {
