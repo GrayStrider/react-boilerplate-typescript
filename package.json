@@ -32,7 +32,7 @@
     "lint": "npm run lint:js && npm run lint:css && npm run lint:ts",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit --incremental false",
     "test": "yarn test:cov && yarn lint:all:fix && yarn codegen && yarn test:typecheck",
     "test:all": "jest --forceExit --detectOpenHandles --runInBand",
     "test:e2e": "yarn test:all --config test/jest.config.e2e.js",
