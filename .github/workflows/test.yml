@@ -3,12 +3,12 @@ name: CI
 on:
   push:
     branches:
-      - '*'
+      - 'dev'
     tags-ignore:
       - dependencies
   pull_request:
     branches:
-      - '*'
+      - 'dev'
 
 jobs:
   build:
@@ -29,14 +29,8 @@ jobs:
 
       - name: install
         run: yarn install
-      - name: start, generate schema and test with coverage
-        run: yarn test:CI --token ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-      - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: test/coverage/lcov.info
+      - name: test
+        run: yarn test:all
 
         env:
           CI: true
