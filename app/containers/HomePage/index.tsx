@@ -26,10 +26,17 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { ApplicationRootState } from '@/types'
+import { ContainerState, UserData } from '@/containers/App/types'
+import { ContainerState as HomeContainerState } from '@/containers/HomePage/types'
 
 const key = 'home';
 
-const stateSelector = createStructuredSelector({
+const stateSelector = createStructuredSelector<ApplicationRootState,
+  Pick<UserData, 'repos'>
+  & HomeContainerState
+  & Pick<ContainerState, 'loading' | 'error'>
+  >({
   repos: makeSelectRepos(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),

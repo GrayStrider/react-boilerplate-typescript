@@ -16,6 +16,8 @@ import IssueLink from './IssueLink';
 import RepoLink from './RepoLink';
 import Wrapper from './Wrapper';
 import { Repo } from './types';
+import { ApplicationRootState } from '@/types'
+import { ContainerState } from '@/containers/App/types'
 
 interface OwnProps {
   item: Repo;
@@ -26,7 +28,8 @@ interface DispatchProps {
 }
 
 type Props = DispatchProps & OwnProps;
-const stateSelector = createStructuredSelector({
+const stateSelector = createStructuredSelector<ApplicationRootState,
+  Pick<ContainerState, 'currentUser'>>({
   currentUser: makeSelectCurrentUser(),
 });
 
