@@ -13,7 +13,7 @@ interface Props {
   className?: string;
 }
 
-function Img(props: Props) {
+function Img (props: Props) {
   return <img className={props.className} src={props.src as string} alt={props.alt} />
 }
 

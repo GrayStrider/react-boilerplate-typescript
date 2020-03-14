@@ -15,18 +15,18 @@ import {appLocales} from '@/translations/i18n'
 import {changeLocale} from '../LanguageProvider/actions'
 import {makeSelectLocale} from '../LanguageProvider/selectors'
 
-const stateSelector = createSelector(
-  makeSelectLocale(),
+const stateSelector = createSelector (
+  makeSelectLocale (),
   locale => ({
     locale,
   }),
 )
 
-export default function LocaleToggle() {
-  const {locale} = useSelector(stateSelector)
-  const dispatch = useDispatch()
+export default function LocaleToggle () {
+  const {locale} = useSelector (stateSelector)
+  const dispatch = useDispatch ()
 
-  const onLocaleToggle = evt => dispatch(changeLocale(evt.target.value))
+  const onLocaleToggle = evt => dispatch (changeLocale (evt.target.value))
   return (
     <Wrapper >
       <Toggle

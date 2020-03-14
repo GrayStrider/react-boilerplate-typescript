@@ -11,7 +11,7 @@ export const initialState: ContainerState = {
   locale: DEFAULT_LOCALE,
 }
 
-function languageProviderReducer(
+function languageProviderReducer (
   state: ContainerState = initialState,
   action: ContainerActions,
 ): ContainerState {

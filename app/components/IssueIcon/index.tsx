@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-function IssueIcon(props: Props) {
+function IssueIcon (props: Props) {
   return (
     <svg height='1em' width='0.875em' className={props.className} {...props}>
       {/* tslint:disable-next-line:max-line-length */}

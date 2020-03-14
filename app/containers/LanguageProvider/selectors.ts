@@ -11,6 +11,6 @@ const selectLanguage = (state: ApplicationRootState) => state.language || initia
  * Select the language locale
  */
 
-const makeSelectLocale = () => createSelector(selectLanguage, languageState => languageState.locale)
+const makeSelectLocale = () => createSelector (selectLanguage, languageState => languageState.locale)
 
 export {selectLanguage, makeSelectLocale}

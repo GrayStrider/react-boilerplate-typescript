@@ -9,7 +9,7 @@ import configureStore from '@/utils/redux-components/configureStore'
 import {translationMessages} from '@/translations/i18n'
 import history from '../../../utils/history'
 
-const messages = defineMessages({
+const messages = defineMessages ({
   someMessage: {
     id: 'some.id',
     defaultMessage: 'This is some default message',
@@ -17,17 +17,17 @@ const messages = defineMessages({
   },
 })
 
-describe('<LanguageProvider />', () => {
+describe ('<LanguageProvider />', () => {
   let store
 
-  beforeEach(() => {
-    store = configureStore({}, history)
+  beforeEach (() => {
+    store = configureStore ({}, history)
   })
 
-  it('should render its children', () => {
+  it ('should render its children', () => {
     const text = 'Test'
     const children = <h1 >{text}</h1 >
-    const {queryByText} = render(
+    const {queryByText} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <LanguageProvider messages={messages} >
@@ -35,11 +35,11 @@ describe('<LanguageProvider />', () => {
         </LanguageProvider >
       </Provider >,
     )
-    expect(queryByText(text)).toBeInTheDocument()
+    expect (queryByText (text)).toBeInTheDocument ()
   })
 
-  it('should render the default language messages', () => {
-    const {queryByText} = render(
+  it ('should render the default language messages', () => {
+    const {queryByText} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <LanguageProvider messages={translationMessages} >
@@ -47,8 +47,8 @@ describe('<LanguageProvider />', () => {
         </LanguageProvider >
       </Provider >,
     )
-    expect(
-      queryByText(messages.someMessage.defaultMessage),
-    ).toBeInTheDocument()
+    expect (
+      queryByText (messages.someMessage.defaultMessage),
+    ).toBeInTheDocument ()
   })
 })

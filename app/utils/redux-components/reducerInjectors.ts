@@ -8,15 +8,15 @@ import createReducer from '@/utils/redux-components/reducers'
 import {Reducer} from 'redux'
 import {InjectedStore} from '@/types'
 
-export function injectReducerFactory(store: InjectedStore, isValid: boolean = false) {
+export function injectReducerFactory (store: InjectedStore, isValid: boolean = false) {
   // tslint:disable-next-line: only-arrow-functions
-  return function injectReducer(key: string, reducer: Reducer<object>) {
+  return function injectReducer (key: string, reducer: Reducer<object>) {
     if (!isValid) {
-      checkStore(store)
+      checkStore (store)
     }
 
-    invariant(
-      isString(key) && !isEmpty(key) && isFunction(reducer),
+    invariant (
+      isString (key) && !isEmpty (key) && isFunction (reducer),
       '(app/utils...) injectReducer: Expected `reducer` to be a reducer function',
     )
 
@@ -24,21 +24,21 @@ export function injectReducerFactory(store: InjectedStore, isValid: boolean = fa
     // Check `store.injectedReducers[key] === reducer` for hot reloading when a key is the same but a reducer is
     // different
     if (
-      Reflect.has(store.injectedReducers, key) &&
+      Reflect.has (store.injectedReducers, key) &&
       store.injectedReducers[key] === reducer
     ) {
       return
     }
 
     store.injectedReducers[key] = reducer
-    store.replaceReducer(createReducer(store.injectedReducers))
+    store.replaceReducer (createReducer (store.injectedReducers))
   }
 }
 
-export function getInjectors(store: InjectedStore) {
-  checkStore(store)
+export function getInjectors (store: InjectedStore) {
+  checkStore (store)
 
   return {
-    injectReducer: injectReducerFactory(store, true),
+    injectReducer: injectReducerFactory (store, true),
   }
 }

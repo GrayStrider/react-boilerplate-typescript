@@ -6,7 +6,7 @@ import LocaleToggle from '@/containers/LocaleToggle'
 import Wrapper from './Wrapper'
 import messages from './messages'
 
-function Footer() {
+function Footer () {
   return (
     <Wrapper >
       <section >

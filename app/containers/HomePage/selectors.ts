@@ -11,7 +11,7 @@ const selectHome = (state: ApplicationRootState) => {
 }
 
 const makeSelectUsername = () =>
-  createSelector(selectHome, substate => {
+  createSelector (selectHome, substate => {
     return substate.username
   })
 

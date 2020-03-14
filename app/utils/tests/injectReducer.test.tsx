@@ -12,8 +12,8 @@ import {getInjectors} from '@/utils/redux-components/reducerInjectors'
 
 import {createMemoryHistory} from 'history'
 
-const memoryHistory = createMemoryHistory()
-jest.mock('@/utils/redux-components/reducerInjectors')
+const memoryHistory = createMemoryHistory ()
+jest.mock ('@/utils/redux-components/reducerInjectors')
 
 import {useInjectReducer} from '@/utils/redux-components/injectReducer'
 
@@ -23,98 +23,98 @@ const Component = () => null
 const reducer = s => s
 
 
-describe('injectReducer decorator', () => {
+describe ('injectReducer decorator', () => {
   let store
   let ComponentWithReducer
   let injectReducer
   let injectors
 
-  beforeAll(() => {
+  beforeAll (() => {
     const mockedGetInjectors = (getInjectors as unknown) as jest.Mock<typeof getInjectors> // compiler doesn't know
-                                                                                            // that it's mocked. So
-                                                                                            // manually cast it.
-    mockedGetInjectors.mockImplementation(() => injectors)
-    injectReducer = require('@/utils/redux-components/injectReducer').default
+    // that it's mocked. So
+    // manually cast it.
+    mockedGetInjectors.mockImplementation (() => injectors)
+    injectReducer = require ('@/utils/redux-components/injectReducer').default
   })
 
-  beforeEach(() => {
-    store = configureStore({}, memoryHistory)
+  beforeEach (() => {
+    store = configureStore ({}, memoryHistory)
     injectors = {
-      injectReducer: jest.fn(),
+      injectReducer: jest.fn (),
     }
-    ComponentWithReducer = injectReducer({key: 'test', reducer: reducer})(
+    ComponentWithReducer = injectReducer ({key: 'test', reducer: reducer}) (
       Component,
     )
-    jest.unmock('@/utils/redux-components/reducerInjectors')
+    jest.unmock ('@/utils/redux-components/reducerInjectors')
   })
 
-  it('should inject a given reducer', () => {
-    renderer.create(
+  it ('should inject a given reducer', () => {
+    renderer.create (
       // tslint:disable-next-line:jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithReducer />
       </Provider >,
     )
 
-    expect(injectors.injectReducer).toHaveBeenCalledTimes(1)
-    expect(injectors.injectReducer).toHaveBeenCalledWith('test', reducer)
+    expect (injectors.injectReducer).toHaveBeenCalledTimes (1)
+    expect (injectors.injectReducer).toHaveBeenCalledWith ('test', reducer)
   })
 
-  it('should set a correct display name', () => {
-    expect(ComponentWithReducer.displayName).toBe('withReducer(Component)')
-    expect(
-      injectReducer({key: 'test', reducer: reducer})(() => null).displayName,
-    ).toBe('withReducer(Component)')
+  it ('should set a correct display name', () => {
+    expect (ComponentWithReducer.displayName).toBe ('withReducer(Component)')
+    expect (
+      injectReducer ({key: 'test', reducer: reducer}) (() => null).displayName,
+    ).toBe ('withReducer(Component)')
   })
 
-  it('should propagate props', () => {
+  it ('should propagate props', () => {
     const props = {testProp: 'test'}
-    const renderedComponent = renderer.create(
+    const renderedComponent = renderer.create (
       // tslint:disable-next-line:jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithReducer {...props} />
       </Provider >,
       )
-      .getInstance()!
+      .getInstance ()!
 
     const {
       props: {children},
     } = renderedComponent
 
-    expect(children.props).toEqual(props)
+    expect (children.props).toEqual (props)
   })
 })
 
-describe('useInjectReducer hook', () => {
+describe ('useInjectReducer hook', () => {
   let store
   let injectors
   let ComponentWithReducer
 
-  beforeAll(() => {
+  beforeAll (() => {
     injectors = {
-      injectReducer: jest.fn(),
+      injectReducer: jest.fn (),
     }
     const mockedGetInjectors = (getInjectors as unknown) as jest.Mock<typeof getInjectors> // compiler doesn't know
-                                                                                            // that it's mocked. So
-                                                                                            // manually cast it.
-    mockedGetInjectors.mockImplementation(() => injectors)
+    // that it's mocked. So
+    // manually cast it.
+    mockedGetInjectors.mockImplementation (() => injectors)
 
-    store = configureStore({}, memoryHistory)
+    store = configureStore ({}, memoryHistory)
     ComponentWithReducer = () => {
-      useInjectReducer({key: 'test', reducer: reducer})
+      useInjectReducer ({key: 'test', reducer: reducer})
       return null
     }
   })
 
-  it('should inject a given reducer', () => {
-    render(
+  it ('should inject a given reducer', () => {
+    render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithReducer />
       </Provider >,
     )
 
-    expect(injectors.injectReducer).toHaveBeenCalledTimes(1)
-    expect(injectors.injectReducer).toHaveBeenCalledWith('test', reducer)
+    expect (injectors.injectReducer).toHaveBeenCalledTimes (1)
+    expect (injectors.injectReducer).toHaveBeenCalledWith ('test', reducer)
   })
 })

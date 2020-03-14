@@ -1,7 +1,7 @@
 import styled from '@/styles/styled-components'
 import NormalA from '@/components/A'
 
-const IssueLink = styled(NormalA)`
+const IssueLink = styled (NormalA)`
   height: 100%;
   color: black;
   display: flex;

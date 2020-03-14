@@ -1,7 +1,7 @@
 import styled from '@/styles/styled-components'
 import NormalA from '@/components/A'
 
-const RepoLink = styled(NormalA)`
+const RepoLink = styled (NormalA)`
   height: 100%;
   color: black;
   display: flex;

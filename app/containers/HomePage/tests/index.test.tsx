@@ -15,10 +15,10 @@ import configureStore from '@/utils/redux-components/configureStore'
 import history from '@/utils/history'
 
 
-jest.mock('containers/App/actions')
+jest.mock ('containers/App/actions')
 
 const renderHomePage = store =>
-  render(
+  render (
     // tslint:disable-next-line: jsx-wrap-multiline
     <Provider store={store} >
       <IntlProvider locale='en' >
@@ -27,55 +27,55 @@ const renderHomePage = store =>
     </Provider >,
   )
 
-describe('<HomePage />', () => {
+describe ('<HomePage />', () => {
   let store
   const mockedLoadRepos = appActions.loadRepos as jest.Mock
 
-  beforeAll(() => {
+  beforeAll (() => {
     // loadRepos is mocked so that we can spy on it but also so that it doesn't trigger a network request
-    mockedLoadRepos.mockImplementation(() => ({type: ''}))
+    mockedLoadRepos.mockImplementation (() => ({type: ''}))
   })
 
-  beforeEach(() => {
-    store = configureStore({}, history)
-    mockedLoadRepos.mockClear()
+  beforeEach (() => {
+    store = configureStore ({}, history)
+    mockedLoadRepos.mockClear ()
   })
 
-  afterEach(cleanup)
+  afterEach (cleanup)
 
-  it('should render and match the snapshot', () => {
+  it ('should render and match the snapshot', () => {
     const {
       container: {firstChild},
-    } = renderHomePage(store)
-    expect(firstChild).toMatchSnapshot()
+    } = renderHomePage (store)
+    expect (firstChild).toMatchSnapshot ()
   })
 
-  it('shouldn`t fetch repos on mount (if username is empty)', () => {
-    renderHomePage(store)
-    expect(initialState.username).toBe('')
-    expect(appActions.loadRepos).not.toHaveBeenCalled()
+  it ('shouldn`t fetch repos on mount (if username is empty)', () => {
+    renderHomePage (store)
+    expect (initialState.username).toBe ('')
+    expect (appActions.loadRepos).not.toHaveBeenCalled ()
   })
 
-  it('shouldn`t fetch repos if the form is submitted when the username is empty', () => {
-    const {container} = renderHomePage(store)
+  it ('shouldn`t fetch repos if the form is submitted when the username is empty', () => {
+    const {container} = renderHomePage (store)
 
-    const form = container.querySelector('form')!
-    fireEvent.submit(form)
+    const form = container.querySelector ('form')!
+    fireEvent.submit (form)
 
-    expect(appActions.loadRepos).not.toHaveBeenCalled()
+    expect (appActions.loadRepos).not.toHaveBeenCalled ()
   })
 
-  it('should fetch repos if the form is submitted when the username isn`t empty', () => {
-    const {container} = renderHomePage(store)
+  it ('should fetch repos if the form is submitted when the username isn`t empty', () => {
+    const {container} = renderHomePage (store)
 
-    store.dispatch(changeUsername('julienben'))
+    store.dispatch (changeUsername ('julienben'))
 
-    const input = container.querySelector('input')!
-    fireEvent.change(input, {target: {value: 'julienben'}})
-    expect(appActions.loadRepos).not.toHaveBeenCalled()
+    const input = container.querySelector ('input')!
+    fireEvent.change (input, {target: {value: 'julienben'}})
+    expect (appActions.loadRepos).not.toHaveBeenCalled ()
 
-    const form = container.querySelector('form')!
-    fireEvent.submit(form)
-    expect(appActions.loadRepos).toHaveBeenCalled()
+    const form = container.querySelector ('form')!
+    fireEvent.submit (form)
+    expect (appActions.loadRepos).toHaveBeenCalled ()
   })
 })

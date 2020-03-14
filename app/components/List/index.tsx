@@ -9,13 +9,13 @@ interface Props {
   items?: Repo[];
 }
 
-function List(props: Props) {
+function List (props: Props) {
   const ComponentToRender = props.component
   let content = <div /> as JSX.Element | JSX.Element[]
 
   // If we have items, render them
   if (props.items) {
-    content = props.items.map(item => (
+    content = props.items.map (item => (
       <ComponentToRender key={`item-${item.id}`} item={item} />
     ))
   } else {

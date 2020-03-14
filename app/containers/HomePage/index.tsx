@@ -35,37 +35,37 @@ const key = 'home'
 const stateSelector = createStructuredSelector<ApplicationRootState,
   Pick<UserData, 'repos'>
   & HomeContainerState
-  & Pick<ContainerState, 'loading' | 'error'>>({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
+  & Pick<ContainerState, 'loading' | 'error'>> ({
+  repos: makeSelectRepos (),
+  username: makeSelectUsername (),
+  loading: makeSelectLoading (),
+  error: makeSelectError (),
 })
 
-export default function HomePage() {
-  const {repos, username, loading, error} = useSelector(stateSelector)
+export default function HomePage () {
+  const {repos, username, loading, error} = useSelector (stateSelector)
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch ()
 
   // Not gonna declare event types here. No need. any is fine
-  const onChangeUsername = (evt: any) => dispatch(changeUsername(evt.target.value))
+  const onChangeUsername = (evt: any) => dispatch (changeUsername (evt.target.value))
   const onSubmitForm = (evt?: any) => {
     if (evt !== undefined && evt.preventDefault) {
-      evt.preventDefault()
+      evt.preventDefault ()
     }
     if (!username) {
       return
     }
-    dispatch(loadRepos())
+    dispatch (loadRepos ())
   }
 
-  useInjectReducer({key: key, reducer: reducer})
-  useInjectSaga({key: key, saga: saga})
+  useInjectReducer ({key: key, reducer: reducer})
+  useInjectSaga ({key: key, saga: saga})
 
-  useEffect(() => {
+  useEffect (() => {
     // When initial state username is not null, submit the form to load repos
-    if (username && username.trim().length > 0) {
-      onSubmitForm()
+    if (username && username.trim ().length > 0) {
+      onSubmitForm ()
     }
   }, [])
 

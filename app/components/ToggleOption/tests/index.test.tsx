@@ -4,31 +4,31 @@ import {IntlProvider, defineMessages} from 'react-intl'
 
 import ToggleOption from '../index'
 
-describe('<ToggleOption />', () => {
-  it('should render default language messages', () => {
+describe ('<ToggleOption />', () => {
+  it ('should render default language messages', () => {
     const defaultEnMessage = 'someContent'
-    const message = defineMessages({
+    const message = defineMessages ({
       enMessage: {
         id: 'boilerplate.containers.LocaleToggle.en',
         defaultMessage: defaultEnMessage,
       },
     })
-    const {container} = render(
+    const {container} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <IntlProvider locale='en' >
         <ToggleOption value='en' message={message.enMessage} />
       </IntlProvider >,
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect (container.firstChild).toMatchSnapshot ()
   })
 
-  it('should display `value`(two letter language code) when `message` is absent', () => {
-    const {queryByText} = render(
+  it ('should display `value`(two letter language code) when `message` is absent', () => {
+    const {queryByText} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <IntlProvider locale='de' >
         <ToggleOption value='de' />
       </IntlProvider >,
     )
-    expect(queryByText('de')).toBeInTheDocument()
+    expect (queryByText ('de')).toBeInTheDocument ()
   })
 })

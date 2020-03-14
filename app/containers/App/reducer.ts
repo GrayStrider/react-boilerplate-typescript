@@ -12,7 +12,7 @@ export const initialState: ContainerState = {
 }
 
 // Take this container's state (as a slice of root state), this container's actions and return new state
-function appReducer(
+function appReducer (
   state: ContainerState = initialState,
   action: ContainerActions,
 ): ContainerState {

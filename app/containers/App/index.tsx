@@ -28,7 +28,7 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `
 
-export default function App() {
+export default function App () {
   return (
     <AppWrapper >
       <Helmet

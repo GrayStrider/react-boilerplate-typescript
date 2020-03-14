@@ -17,8 +17,8 @@ import {InjectSagaParams, InjectedStore} from '@/types'
  *
  */
 
-export default function hocWithSaga<P>({key, saga, mode}: InjectSagaParams) {
-  function wrap(
+export default function hocWithSaga<P> ({key, saga, mode}: InjectSagaParams) {
+  function wrap (
     WrappedComponent: React.ComponentType<P>,
   ): React.ComponentType<P> {
     // dont wanna give access to HOC. Child only
@@ -30,37 +30,37 @@ export default function hocWithSaga<P>({key, saga, mode}: InjectSagaParams) {
       // public static contextType = ReactReduxContext;
       public injectors: ReturnType<typeof getInjectors>
 
-      constructor(props: any, context: any) {
-        super(props, context)
+      constructor (props: any, context: any) {
+        super (props, context)
 
-        this.injectors = getInjectors(context.store)
+        this.injectors = getInjectors (context.store)
 
-        this.injectors.injectSaga(key, {saga: saga, mode: mode}, this.props)
+        this.injectors.injectSaga (key, {saga: saga, mode: mode}, this.props)
       }
 
-      public componentWillUnmount() {
-        this.injectors.ejectSaga(key)
+      public componentWillUnmount () {
+        this.injectors.ejectSaga (key)
       }
 
-      public render() {
+      public render () {
         return <WrappedComponent {...this.props} />
       }
     }
 
-    return hoistNonReactStatics(InjectSaga, WrappedComponent) as any
+    return hoistNonReactStatics (InjectSaga, WrappedComponent) as any
   }
 
   return wrap
 }
 
 const useInjectSaga = ({key, saga, mode}: InjectSagaParams) => {
-  const store = useStore() as InjectedStore
-  React.useEffect(() => {
-    const injectors = getInjectors(store)
-    injectors.injectSaga(key, {saga: saga, mode: mode})
+  const store = useStore () as InjectedStore
+  React.useEffect (() => {
+    const injectors = getInjectors (store)
+    injectors.injectSaga (key, {saga: saga, mode: mode})
 
     return () => {
-      injectors.ejectSaga(key)
+      injectors.ejectSaga (key)
     }
   }, [])
 }

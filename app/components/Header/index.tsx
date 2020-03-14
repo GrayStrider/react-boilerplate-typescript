@@ -8,7 +8,7 @@ import HeaderLink from './HeaderLink'
 import Banner from './banner.jpg'
 import messages from './messages'
 
-function Header() {
+function Header () {
   return (
     <div >
       <A href='https://www.reactboilerplate.com/' >

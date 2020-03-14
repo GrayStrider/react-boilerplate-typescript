@@ -3,9 +3,9 @@ import {loadRepos, reposLoaded, repoLoadingError} from '../actions'
 import {ContainerState} from '../types'
 import {Repo} from '../../RepoListItem/types'
 
-describe('appReducer', () => {
+describe ('appReducer', () => {
   let state: ContainerState
-  beforeEach(() => {
+  beforeEach (() => {
     state = {
       loading: false,
       error: false,
@@ -16,12 +16,12 @@ describe('appReducer', () => {
     }
   })
 
-  it('should return the initial state', () => {
+  it ('should return the initial state', () => {
     const expectedResult = state
-    expect(appReducer(undefined, {} as any)).toEqual(expectedResult)
+    expect (appReducer (undefined, {} as any)).toEqual (expectedResult)
   })
 
-  it('should handle the loadRepos action correctly', () => {
+  it ('should handle the loadRepos action correctly', () => {
     const expectedResult = {
       currentUser: '',
       loading: true,
@@ -30,10 +30,10 @@ describe('appReducer', () => {
         repos: [],
       },
     }
-    expect(appReducer(state, loadRepos())).toEqual(expectedResult)
+    expect (appReducer (state, loadRepos ())).toEqual (expectedResult)
   })
 
-  it('should handle the reposLoaded action correctly', () => {
+  it ('should handle the reposLoaded action correctly', () => {
     const fixture = [
       {
         name: 'My Repo',
@@ -48,12 +48,12 @@ describe('appReducer', () => {
         repos: fixture,
       },
     }
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
+    expect (appReducer (state, reposLoaded (fixture, username))).toEqual (
       expectedResult,
     )
   })
 
-  it('should handle the repoLoadingError action correctly', () => {
+  it ('should handle the repoLoadingError action correctly', () => {
     const fixture = {
       msg: 'Not found',
     }
@@ -67,7 +67,7 @@ describe('appReducer', () => {
       },
     }
 
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+    expect (appReducer (state, repoLoadingError (fixture))).toEqual (
       expectedResult,
     )
   })

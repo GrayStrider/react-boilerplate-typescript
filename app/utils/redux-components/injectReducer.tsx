@@ -13,11 +13,11 @@ import {InjectedStore, InjectReducerParams} from '@/types'
  *
  */
 
-export default function hocWithReducer<P>({
-                                            key,
-                                            reducer,
-                                          }: InjectReducerParams) {
-  function wrap(
+export default function hocWithReducer<P> ({
+                                             key,
+                                             reducer,
+                                           }: InjectReducerParams) {
+  function wrap (
     WrappedComponent: React.ComponentType<P>,
   ): React.ComponentType<P> {
     // dont wanna give access to HOC. Child only
@@ -28,27 +28,27 @@ export default function hocWithReducer<P>({
       WrappedComponent.name ||
       'Component'})`
 
-      constructor(props: any, context: any) {
-        super(props, context)
+      constructor (props: any, context: any) {
+        super (props, context)
 
-        getInjectors(context.store).injectReducer(key, reducer)
+        getInjectors (context.store).injectReducer (key, reducer)
       }
 
-      public render() {
+      public render () {
         return <WrappedComponent {...this.props} />
       }
     }
 
-    return hoistNonReactStatics(ReducerInjector, WrappedComponent) as any
+    return hoistNonReactStatics (ReducerInjector, WrappedComponent) as any
   }
 
   return wrap
 }
 
 const useInjectReducer = ({key, reducer}: InjectReducerParams) => {
-  const store = useStore() as InjectedStore
-  React.useEffect(() => {
-    getInjectors(store).injectReducer(key, reducer)
+  const store = useStore () as InjectedStore
+  React.useEffect (() => {
+    getInjectors (store).injectReducer (key, reducer)
   }, [])
 }
 

@@ -12,10 +12,10 @@ const action: Action<number> = {
 const disp: Dispatch<typeof action> = (param) => param
 
 
-describe('checkStore', () => {
+describe ('checkStore', () => {
   let store: Omit<InjectedStore, 'Symbol[Observable'>
 
-  beforeEach(() => {
+  beforeEach (() => {
     store = {
       dispatch: disp,
       subscribe: (listener) => () => {},
@@ -27,15 +27,15 @@ describe('checkStore', () => {
     }
   })
 
-  it('should not throw if passed valid store shape', () => {
-    expect(() => checkStore(store)).not.toThrow()
+  it ('should not throw if passed valid store shape', () => {
+    expect (() => checkStore (store)).not.toThrow ()
   })
 
-  it('should throw if passed invalid store shape', () => {
-    expect(() => checkStore({})).toThrow()
-    expect(() => checkStore({...store, injectedSagas: null})).toThrow()
-    expect(() => checkStore({...store, injectedReducers: null})).toThrow()
-    expect(() => checkStore({...store, runSaga: null})).toThrow()
-    expect(() => checkStore({...store, replaceReducer: null})).toThrow()
+  it ('should throw if passed invalid store shape', () => {
+    expect (() => checkStore ({})).toThrow ()
+    expect (() => checkStore ({...store, injectedSagas: null})).toThrow ()
+    expect (() => checkStore ({...store, injectedReducers: null})).toThrow ()
+    expect (() => checkStore ({...store, runSaga: null})).toThrow ()
+    expect (() => checkStore ({...store, replaceReducer: null})).toThrow ()
   })
 })

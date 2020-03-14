@@ -16,16 +16,16 @@ export interface Props {
   href?: string;
   children?: ReactNode;
 
-  handleRoute?(): void;
+  handleRoute? (): void;
 
-  onClick?(): void;
+  onClick? (): void;
 }
 
-function Button(props: Props) {
+function Button (props: Props) {
   // Render an anchor tag
   let button = (
     <A href={props.href} onClick={props.onClick} >
-      {Children.toArray(props.children)}
+      {Children.toArray (props.children)}
     </A >
   )
 
@@ -33,7 +33,7 @@ function Button(props: Props) {
   if (props.handleRoute) {
     button = (
       <StyledButton onClick={props.handleRoute} >
-        {Children.toArray(props.children)}
+        {Children.toArray (props.children)}
       </StyledButton >
     )
   }

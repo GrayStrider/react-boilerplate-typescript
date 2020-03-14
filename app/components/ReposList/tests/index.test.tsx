@@ -8,23 +8,23 @@ import configureStore from '@/utils/redux-components/configureStore'
 import history from '../../../utils/history'
 import {Repo} from '@/containers/RepoListItem/types'
 
-describe('<ReposList />', () => {
-  it('should render the loading indicator when its loading', () => {
-    const {container} = render(<ReposList loading />)
-    expect(container.firstChild).toMatchSnapshot()
+describe ('<ReposList />', () => {
+  it ('should render the loading indicator when its loading', () => {
+    const {container} = render (<ReposList loading />)
+    expect (container.firstChild).toMatchSnapshot ()
   })
 
-  it('should render an error if loading failed', () => {
-    const {queryByText} = render(
+  it ('should render an error if loading failed', () => {
+    const {queryByText} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <IntlProvider locale='en' >
         <ReposList loading={false} error={{message: 'Loading failed!'}} />
       </IntlProvider >,
     )
-    expect(queryByText(/Something went wrong/)).toBeInTheDocument()
+    expect (queryByText (/Something went wrong/)).toBeInTheDocument ()
   })
 
-  it('should render the repositories if loading was successful', () => {
+  it ('should render the repositories if loading was successful', () => {
 
     const initialState = {
       global: {
@@ -36,7 +36,7 @@ describe('<ReposList />', () => {
         },
       },
     }
-    const store = configureStore(
+    const store = configureStore (
       initialState,
       history,
     )
@@ -51,7 +51,7 @@ describe('<ReposList />', () => {
         full_name: 'react-boilerplate/react-boilerplate',
       },
     ] as Repo[]
-    const {container} = render(
+    const {container} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <IntlProvider locale='en' >
@@ -60,14 +60,14 @@ describe('<ReposList />', () => {
       </Provider >,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect (container.firstChild).toMatchSnapshot ()
   })
 
-  it('should not render anything if nothing interesting is provided', () => {
-    const {container} = render(
+  it ('should not render anything if nothing interesting is provided', () => {
+    const {container} = render (
       <ReposList repos={undefined} error={false} loading={false} />,
     )
 
-    expect(container).toBeEmpty()
+    expect (container).toBeEmpty ()
   })
 })

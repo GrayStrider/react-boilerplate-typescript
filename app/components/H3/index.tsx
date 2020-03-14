@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-function H3(props) {
+function H3 (props) {
   return <h3 {...props} />
 }
 

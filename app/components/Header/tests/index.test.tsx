@@ -8,12 +8,12 @@ import {createMemoryHistory} from 'history'
 import Header from '../index'
 import configureStore from '@/utils/redux-components/configureStore'
 
-describe('<Header />', () => {
-  const history = createMemoryHistory()
-  const store = configureStore({}, history)
+describe ('<Header />', () => {
+  const history = createMemoryHistory ()
+  const store = configureStore ({}, history)
 
-  it('should render a div', () => {
-    const {container} = render(
+  it ('should render a div', () => {
+    const {container} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <IntlProvider locale='en' >
@@ -23,6 +23,6 @@ describe('<Header />', () => {
         </IntlProvider >
       </Provider >,
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect (container.firstChild).toMatchSnapshot ()
   })
 })

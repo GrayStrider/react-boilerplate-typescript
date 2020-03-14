@@ -29,12 +29,12 @@ interface DispatchProps {
 
 type Props = DispatchProps & OwnProps;
 const stateSelector = createStructuredSelector<ApplicationRootState,
-  Pick<ContainerState, 'currentUser'>>({
-  currentUser: makeSelectCurrentUser(),
+  Pick<ContainerState, 'currentUser'>> ({
+  currentUser: makeSelectCurrentUser (),
 })
 
-export default function RepoListItem({item}: Props) {
-  const {currentUser} = useSelector(stateSelector)
+export default function RepoListItem ({item}: Props) {
+  const {currentUser} = useSelector (stateSelector)
   let nameprefix = ''
 
   // If the repository is owned by a different person than we got the data for

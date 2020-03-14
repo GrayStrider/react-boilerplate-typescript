@@ -8,7 +8,7 @@ export interface InjectedStore extends Store {
   injectedReducers: any;
   injectedSagas: any;
 
-  runSaga(
+  runSaga (
     saga: (() => IterableIterator<any>) | undefined,
     args: any | undefined,
   ): any;

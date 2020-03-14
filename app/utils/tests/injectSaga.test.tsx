@@ -16,116 +16,116 @@ import {getInjectors} from '@/utils/redux-components/sagaInjectors'
 import {createMemoryHistory} from 'history'
 import {InjectedStore} from '@/types'
 
-const memoryHistory = createMemoryHistory()
+const memoryHistory = createMemoryHistory ()
 
 // Fixtures
 const Component = () => null
 
-function* testSaga() {
-  yield put({type: 'TEST', payload: 'yup'})
+function* testSaga () {
+  yield put ({type: 'TEST', payload: 'yup'})
 }
 
-jest.mock('@/utils/redux-components/sagaInjectors')
-describe('injectSaga decorator', () => {
+jest.mock ('@/utils/redux-components/sagaInjectors')
+describe ('injectSaga decorator', () => {
   let store: InjectedStore
   let injectors: /*typeof getInjectors*/ any
   let ComponentWithSaga
 
-  beforeAll(() => {
+  beforeAll (() => {
     const mockedGetInjectors = (getInjectors as unknown) as jest.Mock<typeof getInjectors> // compiler doesn't know
-                                                                                            // that it's mocked. So
-                                                                                            // manually cast it.
-    mockedGetInjectors.mockImplementation(() => injectors)
+    // that it's mocked. So
+    // manually cast it.
+    mockedGetInjectors.mockImplementation (() => injectors)
   })
 
-  beforeEach(() => {
-    store = configureStore({}, memoryHistory)
+  beforeEach (() => {
+    store = configureStore ({}, memoryHistory)
     injectors = {
-      injectSaga: jest.fn(),
-      ejectSaga: jest.fn(),
+      injectSaga: jest.fn (),
+      ejectSaga: jest.fn (),
     }
-    ComponentWithSaga = injectSaga({
+    ComponentWithSaga = injectSaga ({
       key: 'test',
       saga: testSaga,
       mode: 'testMode',
-    })(Component)
+    }) (Component)
   })
 
-  it('should inject given saga, mode, and props', () => {
+  it ('should inject given saga, mode, and props', () => {
     const props = {test: 'test'}
-    renderer.create(
+    renderer.create (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithSaga {...props} />
       </Provider >,
     )
 
-    expect(injectors.injectSaga).toHaveBeenCalledTimes(1)
-    expect(injectors.injectSaga).toHaveBeenCalledWith(
+    expect (injectors.injectSaga).toHaveBeenCalledTimes (1)
+    expect (injectors.injectSaga).toHaveBeenCalledWith (
       'test',
       {saga: testSaga, mode: 'testMode'},
       props,
     )
   })
 
-  it('should eject on unmount with a correct saga key', () => {
+  it ('should eject on unmount with a correct saga key', () => {
     const props = {test: 'test'}
-    const renderedComponent = renderer.create(
+    const renderedComponent = renderer.create (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithSaga {...props} />
       </Provider >,
     )
-    renderedComponent.unmount()
+    renderedComponent.unmount ()
 
-    expect(injectors.ejectSaga).toHaveBeenCalledTimes(1)
-    expect(injectors.ejectSaga).toHaveBeenCalledWith('test')
+    expect (injectors.ejectSaga).toHaveBeenCalledTimes (1)
+    expect (injectors.ejectSaga).toHaveBeenCalledWith ('test')
   })
 
-  it('should set a correct display name', () => {
-    expect(ComponentWithSaga.displayName).toBe('withSaga(Component)')
-    expect(
-      injectSaga({key: 'test', saga: testSaga})(() => null).displayName,
-    ).toBe('withSaga(Component)')
+  it ('should set a correct display name', () => {
+    expect (ComponentWithSaga.displayName).toBe ('withSaga(Component)')
+    expect (
+      injectSaga ({key: 'test', saga: testSaga}) (() => null).displayName,
+    ).toBe ('withSaga(Component)')
   })
 
-  it('should propagate props', () => {
+  it ('should propagate props', () => {
     const props = {testProp: 'test'}
-    const renderedComponent = renderer.create(
+    const renderedComponent = renderer.create (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithSaga {...props} />
       </Provider >,
       )
-      .getInstance()!
+      .getInstance ()!
 
     const {
       props: {children},
     } = renderedComponent
-    expect(children.props).toEqual(props)
+    expect (children.props).toEqual (props)
   })
 })
 
-describe('useInjectSaga hook', () => {
+describe ('useInjectSaga hook', () => {
   let store
   let injectors
   let ComponentWithSaga
 
-  beforeAll(() => {
+  beforeAll (() => {
     const mockedGetInjectors = (getInjectors as unknown) as jest.Mock<typeof getInjectors> // compiler doesn't know
-                                                                                            // that it's mocked. So
-                                                                                            // manually cast it.
-    mockedGetInjectors.mockImplementation(() => injectors)
+    // that it's mocked. So
+    // manually cast it.
+    mockedGetInjectors.mockImplementation (() => injectors)
   })
 
-  beforeEach(() => {
-    store = configureStore({}, memoryHistory)
+  beforeEach (() => {
+    store = configureStore ({}, memoryHistory)
     injectors = {
-      injectSaga: jest.fn(),
-      ejectSaga: jest.fn(),
+      injectSaga: jest.fn (),
+      ejectSaga: jest.fn (),
     }
     ComponentWithSaga = () => {
-      useInjectSaga({
+      useInjectSaga ({
         key: 'test',
         saga: testSaga,
         mode: 'testMode',
@@ -134,33 +134,33 @@ describe('useInjectSaga hook', () => {
     }
   })
 
-  it('should inject given saga and mode', () => {
+  it ('should inject given saga and mode', () => {
     const props = {test: 'test'}
-    render(
+    render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithSaga {...props} />
       </Provider >,
     )
 
-    expect(injectors.injectSaga).toHaveBeenCalledTimes(1)
-    expect(injectors.injectSaga).toHaveBeenCalledWith('test', {
+    expect (injectors.injectSaga).toHaveBeenCalledTimes (1)
+    expect (injectors.injectSaga).toHaveBeenCalledWith ('test', {
       saga: testSaga,
       mode: 'testMode',
     })
   })
 
-  it('should eject on unmount with a correct saga key', () => {
+  it ('should eject on unmount with a correct saga key', () => {
     const props = {test: 'test'}
-    const {unmount} = render(
+    const {unmount} = render (
       // tslint:disable-next-line: jsx-wrap-multiline
       <Provider store={store} >
         <ComponentWithSaga {...props} />
       </Provider >,
     )
-    unmount()
+    unmount ()
 
-    expect(injectors.ejectSaga).toHaveBeenCalledTimes(1)
-    expect(injectors.ejectSaga).toHaveBeenCalledWith('test')
+    expect (injectors.ejectSaga).toHaveBeenCalledTimes (1)
+    expect (injectors.ejectSaga).toHaveBeenCalledWith ('test')
   })
 })

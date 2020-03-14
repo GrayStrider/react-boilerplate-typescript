@@ -10,18 +10,18 @@ import {InjectedStore, ApplicationRootState} from '@/types'
 import {History} from 'history'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-export default function configureStore(initialState: ApplicationRootState | {} = {}, history: History) {
+export default function configureStore (initialState: ApplicationRootState | {} = {}, history: History) {
   const reduxSagaMonitorOptions = {}
-  const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions)
+  const sagaMiddleware = createSagaMiddleware (reduxSagaMonitorOptions)
 
-  const middlewares = [sagaMiddleware, routerMiddleware(history)]
+  const middlewares = [sagaMiddleware, routerMiddleware (history)]
 
-  let enhancer = applyMiddleware(...middlewares)
+  let enhancer = applyMiddleware (...middlewares)
 
   // If Redux Dev Tools and Saga Dev Tools Extensions are installed, enable them
   /* istanbul ignore next */
   if (process.env.NODE_ENV !== 'production' && typeof window === 'object') {
-    enhancer = composeWithDevTools(enhancer)
+    enhancer = composeWithDevTools (enhancer)
   }
 
   // NOTE: Uncomment the code below to restore support for Redux Saga
@@ -36,8 +36,8 @@ export default function configureStore(initialState: ApplicationRootState | {} =
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
 
-  const store = createStore(
-    createReducer(),
+  const store = createStore (
+    createReducer (),
     initialState,
     enhancer,
   ) as InjectedStore
@@ -50,8 +50,8 @@ export default function configureStore(initialState: ApplicationRootState | {} =
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      store.replaceReducer(createReducer(store.injectedReducers))
+    module.hot.accept ('./reducers', () => {
+      store.replaceReducer (createReducer (store.injectedReducers))
     })
   }
 

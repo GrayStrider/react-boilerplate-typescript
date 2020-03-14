@@ -8,7 +8,7 @@ export const initialState: ContainerState = {
 
 
 // Take this container's state (as a slice of root state), this container's actions and return new state
-function homeReducer(
+function homeReducer (
   state: ContainerState = initialState,
   action: ContainerActions,
 ): ContainerState {
@@ -16,7 +16,7 @@ function homeReducer(
     case ActionTypes.CHANGE_USERNAME:
       return {
         // Delete prefixed '@' from the github username
-        username: action.payload.replace(/@/gi, ''),
+        username: action.payload.replace (/@/gi, ''),
       }
     default:
       return state

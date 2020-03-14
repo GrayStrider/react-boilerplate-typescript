@@ -7,16 +7,16 @@ import Footer from '../index'
 import configureStore from '@/utils/redux-components/configureStore'
 import history from '../../../utils/history'
 
-describe('<Footer />', () => {
+describe ('<Footer />', () => {
   let store
 
-  beforeAll(() => {
-    store = configureStore({}, history)
+  beforeAll (() => {
+    store = configureStore ({}, history)
   })
 
-  it('should render and match the snapshot', () => {
+  it ('should render and match the snapshot', () => {
     const renderedComponent = renderer
-      .create(
+      .create (
         // tslint:disable-next-line: jsx-wrap-multiline
         <Provider store={store} >
           <IntlProvider locale='en' >
@@ -24,8 +24,8 @@ describe('<Footer />', () => {
           </IntlProvider >
         </Provider >,
       )
-      .toJSON()
+      .toJSON ()
 
-    expect(renderedComponent).toMatchSnapshot()
+    expect (renderedComponent).toMatchSnapshot ()
   })
 })
