@@ -34,7 +34,7 @@
     "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
     "typecheck": "tsc --noEmit --incremental false",
     "test": "yarn test:cov && yarn lint:all:fix && yarn codegen && yarn test:typecheck",
-    "test:all": "jest --forceExit --detectOpenHandles --runInBand",
+    "test:all": "jest --forceExit --detectOpenHandles",
     "test:e2e": "yarn test:all --config test/jest.config.e2e.js",
     "test:unit": "yarn test:all --config test/jest.config.unit.js",
     "test:cov": "yarn test:all --coverage",
