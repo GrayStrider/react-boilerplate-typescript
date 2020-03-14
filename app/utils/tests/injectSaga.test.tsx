@@ -14,7 +14,7 @@ import {getInjectors} from 'app/utils/redux-components/sagaInjectors'
 
 
 import {createMemoryHistory} from 'history'
-import {InjectedStore} from '../../types'
+import {InjectedStore} from '@/types'
 
 const memoryHistory = createMemoryHistory()
 

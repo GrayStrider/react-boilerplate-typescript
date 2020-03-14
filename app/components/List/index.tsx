@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Ul from './Ul'
 import Wrapper from './Wrapper'
-import {Repo} from '../../containers/RepoListItem/types'
+import {Repo} from '@/containers/RepoListItem/types'
 
 interface Props {
   component: React.ComponentType<any>;

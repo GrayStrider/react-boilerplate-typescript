@@ -6,7 +6,7 @@ import {render} from '@testing-library/react'
 import ReposList from '../index'
 import configureStore from '@/utils/redux-components/configureStore'
 import history from '../../../utils/history'
-import {Repo} from '../../../containers/RepoListItem/types'
+import {Repo} from '@/containers/RepoListItem/types'
 
 describe('<ReposList />', () => {
   it('should render the loading indicator when its loading', () => {

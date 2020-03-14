@@ -6,7 +6,7 @@ import {
   makeSelectRepos,
   makeSelectLocation,
 } from '../selectors'
-import {ApplicationRootState} from '../../../types'
+import {ApplicationRootState} from '@/types'
 import {Repo} from '../../RepoListItem/types'
 
 describe('selectGlobal', () => {

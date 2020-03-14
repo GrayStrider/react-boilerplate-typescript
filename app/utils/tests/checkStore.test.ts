@@ -3,7 +3,7 @@
  */
 
 import checkStore from 'app/utils/redux-components/checkStore'
-import {InjectedStore} from '../../types'
+import {InjectedStore} from '@/types'
 import {Action, Dispatch} from 'redux'
 
 const action: Action<number> = {
