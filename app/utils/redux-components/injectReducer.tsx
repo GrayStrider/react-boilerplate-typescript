@@ -2,7 +2,7 @@ import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useStore, ReactReduxContext } from 'react-redux';
 
-import { getInjectors } from './reducerInjectors';
+import { getInjectors } from 'app/utils/redux-components/reducerInjectors';
 import { InjectedStore, InjectReducerParams } from '@/types'
 
 /**

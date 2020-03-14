@@ -3,8 +3,8 @@ import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 import isString from 'lodash/isString';
 
-import checkStore from './checkStore';
-import createReducer from '../reducers';
+import checkStore from 'app/utils/redux-components/checkStore';
+import createReducer from '@/utils/redux-components/reducers';
 import { Reducer } from 'redux';
 import { InjectedStore } from '@/types'
 

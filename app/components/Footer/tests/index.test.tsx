@@ -4,7 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 
 import Footer from '../index';
-import configureStore from '../../../configureStore';
+import configureStore from '@/utils/redux-components/configureStore';
 import history from '../../../utils/history';
 
 describe('<Footer />', () => {

@@ -10,8 +10,8 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { useInjectReducer } from '@/utils/injectReducer';
-import { useInjectSaga } from '@/utils/injectSaga';
+import { useInjectReducer } from '@/utils/redux-components/injectReducer';
+import { useInjectSaga } from '@/utils/redux-components/injectSaga';
 import { makeSelectError, makeSelectLoading, makeSelectRepos } from '@/containers/App/selectors';
 import H2 from '@/components/H2';
 import ReposList from '@/components/ReposList';

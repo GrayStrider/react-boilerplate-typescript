@@ -7,15 +7,15 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 
-import configureStore from '../../configureStore';
-import { getInjectors } from '../reducerInjectors';
+import configureStore from '@/utils/redux-components/configureStore';
+import { getInjectors } from 'app/utils/redux-components/reducerInjectors';
 
 import { createMemoryHistory } from 'history';
 
 const memoryHistory = createMemoryHistory();
-jest.mock('../reducerInjectors');
+jest.mock('app/utils/redux-components/reducerInjectors');
 
-import { useInjectReducer } from '../injectReducer';
+import { useInjectReducer } from 'app/utils/redux-components/injectReducer';
 
 // Fixtures
 const Component = () => null;
@@ -34,7 +34,7 @@ describe('injectReducer decorator', () => {
       typeof getInjectors
     >; // compiler doesn't know that it's mocked. So manually cast it.
     mockedGetInjectors.mockImplementation(() => injectors);
-    injectReducer = require('../injectReducer').default;
+    injectReducer = require('app/utils/redux-components/injectReducer').default;
   });
 
   beforeEach(() => {
@@ -45,7 +45,7 @@ describe('injectReducer decorator', () => {
     ComponentWithReducer = injectReducer({ key: 'test', reducer: reducer })(
       Component,
     );
-    jest.unmock('../reducerInjectors');
+    jest.unmock('app/utils/redux-components/reducerInjectors');
   });
 
   it('should inject a given reducer', () => {

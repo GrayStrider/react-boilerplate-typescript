@@ -8,9 +8,9 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import configureStore from '../../configureStore';
-import injectSaga, { useInjectSaga } from '../injectSaga';
-import { getInjectors } from '../sagaInjectors';
+import configureStore from '@/utils/redux-components/configureStore';
+import injectSaga, { useInjectSaga } from 'app/utils/redux-components/injectSaga';
+import { getInjectors } from 'app/utils/redux-components/sagaInjectors';
 
 
 import { createMemoryHistory } from 'history';
@@ -25,7 +25,7 @@ function* testSaga() {
   yield put({ type: 'TEST', payload: 'yup' });
 }
 
-jest.mock('../sagaInjectors');
+jest.mock('@/utils/redux-components/sagaInjectors');
 describe('injectSaga decorator', () => {
   let store: InjectedStore;
   let injectors: /*typeof getInjectors*/ any;

@@ -7,12 +7,12 @@ import { createMemoryHistory } from 'history';
 
 const memoryHistory = createMemoryHistory();
 
-import configureStore from '../../configureStore';
+import configureStore from '@/utils/redux-components/configureStore';
 import {
   getInjectors,
   injectSagaFactory,
   ejectSagaFactory,
-} from '../sagaInjectors';
+} from 'app/utils/redux-components/sagaInjectors';
 import { DAEMON, ONCE_TILL_UNMOUNT, RESTART_ON_REMOUNT } from '../constants';
 
 function* testSaga() {

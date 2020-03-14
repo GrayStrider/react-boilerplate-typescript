@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import { createMemoryHistory } from 'history';
 
 import Header from '../index';
-import configureStore from '../../../configureStore';
+import configureStore from '@/utils/redux-components/configureStore';
 
 describe('<Header />', () => {
   const history = createMemoryHistory();

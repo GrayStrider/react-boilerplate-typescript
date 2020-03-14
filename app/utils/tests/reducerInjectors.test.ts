@@ -4,9 +4,9 @@
 
 import identity from 'lodash/identity';
 
-import configureStore from '../../configureStore';
+import configureStore from '@/utils/redux-components/configureStore';
 
-import { getInjectors, injectReducerFactory } from '../reducerInjectors';
+import { getInjectors, injectReducerFactory } from 'app/utils/redux-components/reducerInjectors';
 import history from '../history';
 
 const initialState = { reduced: 'soon' };

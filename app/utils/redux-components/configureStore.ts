@@ -5,8 +5,8 @@
 import { applyMiddleware, createStore } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
-import createReducer from './reducers';
-import { InjectedStore, ApplicationRootState } from './types'
+import createReducer from '@/utils/redux-components/reducers';
+import { InjectedStore, ApplicationRootState } from '@/types'
 import { History } from 'history';
 import { composeWithDevTools } from 'redux-devtools-extension';
 

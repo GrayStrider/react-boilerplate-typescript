@@ -2,7 +2,7 @@
  * Test store addons
  */
 import history from '../utils/history';
-import configureStore from '../configureStore';
+import configureStore from '@/utils/redux-components/configureStore';
 import { InjectedStore } from '../types';
 import { composeWithDevTools } from 'redux-devtools-extension';
 

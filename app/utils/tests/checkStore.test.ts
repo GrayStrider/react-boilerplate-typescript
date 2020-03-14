@@ -2,7 +2,7 @@
  * Test injectors
  */
 
-import checkStore from '../checkStore';
+import checkStore from 'app/utils/redux-components/checkStore';
 import { InjectedStore } from '../../types';
 import { Action, Dispatch } from 'redux';
 

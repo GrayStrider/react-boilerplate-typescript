@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 
 import ReposList from '../index';
-import configureStore from '../../../configureStore';
+import configureStore from '@/utils/redux-components/configureStore';
 import history from '../../../utils/history';
 import { Repo } from '../../../containers/RepoListItem/types';
 

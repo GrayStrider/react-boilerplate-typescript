@@ -2,7 +2,7 @@ import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useStore } from 'react-redux';
 
-import { getInjectors } from './sagaInjectors';
+import { getInjectors } from 'app/utils/redux-components/sagaInjectors';
 import { InjectSagaParams, InjectedStore } from '@/types';
 
 /**

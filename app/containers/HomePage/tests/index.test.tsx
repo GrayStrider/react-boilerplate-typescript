@@ -11,7 +11,7 @@ import * as appActions from '@/containers/App/actions';
 import HomePage from '../index';
 import { initialState } from '../reducer';
 import { changeUsername } from '../actions';
-import configureStore from '@/configureStore'
+import configureStore from '@/utils/redux-components/configureStore'
 import history from '@/utils/history';
 
 
