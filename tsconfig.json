@@ -35,7 +35,7 @@
     "allowSyntheticDefaultImports": true,
     // no errors with commonjs modules interop
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": false,
     // include js files
     "declaration": false,
     "emitDecoratorMetadata": true,
