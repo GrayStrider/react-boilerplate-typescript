@@ -18,6 +18,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsConfig: 'tsconfig.json',
+      diagnostics: false,
     },
   },
   moduleDirectories: ['node_modules', 'app'],
@@ -29,10 +30,10 @@ module.exports = {
     ...pathsToModuleNameMapper(paths, {prefix: '<rootDir>/'}),
   },
   setupFilesAfterEnv: [
-    '<rootDir>/internals/testing/test-bundler.js',
+    '<rootDir>/internals/testing/test-bundler.ts',
     '@testing-library/jest-dom/extend-expect',
   ],
-  testRegex: 'tests/.*\\.test\\.(js|ts(x?))$',
+  testRegex: 'tests/.*\\.(test|spec)\\.(js|ts(x?))$',
   transform: {
     '^.+\\.(ts(x?)|js)$': 'ts-jest',
   },
