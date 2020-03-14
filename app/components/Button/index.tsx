@@ -6,36 +6,39 @@
  * otherwise it'll render a link with an onclick
  */
 
-import React, { Children, ReactNode } from 'react';
+import React, {Children, ReactNode} from 'react'
 
-import A from './A';
-import StyledButton from './StyledButton';
-import Wrapper from './Wrapper';
+import A from './A'
+import StyledButton from './StyledButton'
+import Wrapper from './Wrapper'
 
 export interface Props {
-  handleRoute?(): void;
   href?: string;
-  onClick?(): void;
   children?: ReactNode;
+
+  handleRoute?(): void;
+
+  onClick?(): void;
 }
+
 function Button(props: Props) {
   // Render an anchor tag
   let button = (
-    <A href={props.href} onClick={props.onClick}>
+    <A href={props.href} onClick={props.onClick} >
       {Children.toArray(props.children)}
-    </A>
-  );
+    </A >
+  )
 
   // If the Button has a handleRoute prop, we want to render a button
   if (props.handleRoute) {
     button = (
-      <StyledButton onClick={props.handleRoute}>
+      <StyledButton onClick={props.handleRoute} >
         {Children.toArray(props.children)}
-      </StyledButton>
-    );
+      </StyledButton >
+    )
   }
 
-  return <Wrapper>{button}</Wrapper>;
+  return <Wrapper >{button}</Wrapper >
 }
 
-export default Button;
+export default Button

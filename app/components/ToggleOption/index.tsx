@@ -4,12 +4,12 @@
  *
  */
 
-import * as React from 'react';
-import { injectIntl} from 'react-intl';
+import * as React from 'react'
+import {injectIntl} from 'react-intl'
 
-const ToggleOption = ({ value, message, intl }) => (
-  <option value={value}>{message ? intl.formatMessage(message) : value}</option>
-);
+const ToggleOption = ({value, message, intl}) => (
+  <option value={value} >{message ? intl.formatMessage(message) : value}</option >
+)
 
 
-export default injectIntl(ToggleOption);
+export default injectIntl(ToggleOption)

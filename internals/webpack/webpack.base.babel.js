@@ -122,13 +122,13 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
-    new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
+    new ForkTsCheckerWebpackPlugin({checkSyntacticErrors: true}),
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
     extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
     mainFields: ['browser', 'jsnext:main', 'main'],
-    plugins: [new TsconfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */ })]
+    plugins: [new TsconfigPathsPlugin({ /*configFile: "./path/to/tsconfig.json" */})]
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

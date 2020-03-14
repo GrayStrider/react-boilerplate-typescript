@@ -8,16 +8,16 @@ require('shelljs/global');
 
 const fs = require('fs');
 const nodeGlob = require('glob');
-const { transform } = require('@babel/core');
+const {transform} = require('@babel/core');
 const get = require('lodash/get');
 
 const animateProgress = require('./helpers/progress');
 const addCheckmark = require('./helpers/checkmark');
 
-const { appLocales, DEFAULT_LOCALE } = require('../../app/translations/i18n');
+const {appLocales, DEFAULT_LOCALE} = require('../../app/translations/i18n');
 
 const babel = require('../../babel.config.js');
-const { presets } = babel;
+const {presets} = babel;
 let plugins = babel.plugins || [];
 
 plugins.push('react-intl');
@@ -94,7 +94,7 @@ const extractFromFile = async filename => {
   try {
     const code = await readFile(filename);
 
-    const output = await transform(code, { filename, presets, plugins });
+    const output = await transform(code, {filename, presets, plugins});
     const messages = get(output, 'metadata.react-intl.messages', []);
 
     for (const message of messages) {

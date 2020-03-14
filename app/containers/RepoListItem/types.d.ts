@@ -1,7 +1,7 @@
 import {
   ReposListForksResponseItem,
   SearchReposResponseItemsItemOwner,
-} from '@octokit/rest';
+} from '@octokit/rest'
 
 interface Owner extends SearchReposResponseItemsItemOwner {
   html_url: string;

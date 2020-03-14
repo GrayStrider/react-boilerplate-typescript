@@ -1,12 +1,12 @@
-import languageProviderReducer from '../reducer';
-import ActionTypes from '../constants';
+import languageProviderReducer from '../reducer'
+import ActionTypes from '../constants'
 
 describe('languageProviderReducer', () => {
   it('returns the initial state', () => {
     expect(languageProviderReducer(undefined, {} as any)).toEqual({
       locale: 'en',
-    });
-  });
+    })
+  })
 
   it('changes the locale', () => {
     expect(
@@ -16,6 +16,6 @@ describe('languageProviderReducer', () => {
       }),
     ).toEqual({
       locale: 'de',
-    });
-  });
-});
+    })
+  })
+})

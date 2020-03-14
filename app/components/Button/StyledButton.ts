@@ -1,9 +1,9 @@
-import styled from '@/styles/styled-components';
+import styled from '@/styles/styled-components'
 
-import buttonStyles from './buttonStyles';
+import buttonStyles from './buttonStyles'
 
 const StyledButton = styled.button`
   ${buttonStyles};
-`;
+`
 
-export default StyledButton;
+export default StyledButton

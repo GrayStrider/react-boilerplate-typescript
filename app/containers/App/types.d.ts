@@ -1,7 +1,7 @@
-import { ActionType } from 'typesafe-actions';
-import * as actions from './actions';
-import { Repo } from '../RepoListItem/types';
-import { ApplicationRootState } from '@/types';
+import {ActionType} from 'typesafe-actions'
+import * as actions from './actions'
+import {Repo} from '../RepoListItem/types'
+import {ApplicationRootState} from '@/types'
 
 /* --- STATE --- */
 
@@ -27,4 +27,4 @@ type RootState = ApplicationRootState;
 type ContainerState = AppState;
 type ContainerActions = AppActions;
 
-export { RootState, ContainerState, ContainerActions, UserData };
+export {RootState, ContainerState, ContainerActions, UserData}

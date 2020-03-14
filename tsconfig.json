@@ -3,7 +3,6 @@
     "app/**/*",
     "internals/templates/**/*"
   ],
-
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

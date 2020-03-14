@@ -1,66 +1,66 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { render, fireEvent } from '@testing-library/react';
+import React from 'react'
+import {Provider} from 'react-redux'
+import {render, fireEvent} from '@testing-library/react'
 
-import LocaleToggle from '../index';
-import * as actions from '../../LanguageProvider/actions';
-import LanguageProvider from '../../LanguageProvider';
+import LocaleToggle from '../index'
+import * as actions from '../../LanguageProvider/actions'
+import LanguageProvider from '../../LanguageProvider'
 
-import configureStore from '@/utils/redux-components/configureStore';
-import { translationMessages } from 'app/translations/i18n';
-import { action } from 'typesafe-actions';
-import history from '../../../utils/history';
+import configureStore from '@/utils/redux-components/configureStore'
+import {translationMessages} from 'app/translations/i18n'
+import {action} from 'typesafe-actions'
+import history from '../../../utils/history'
 
-jest.mock('../../LanguageProvider/actions');
+jest.mock('../../LanguageProvider/actions')
 
 describe('<LocaleToggle />', () => {
-  let store;
+  let store
 
   beforeAll(() => {
-    const mockedChangeLocale = actions.changeLocale as jest.Mock;
+    const mockedChangeLocale = actions.changeLocale as jest.Mock
 
     mockedChangeLocale.mockImplementation(
       () => action('test', undefined) as any,
-    );
-    store = configureStore({}, history);
-  });
+    )
+    store = configureStore({}, history)
+  })
 
   it('should match the snapshot', () => {
-    const { container } = render(
+    const {container} = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <LanguageProvider messages={translationMessages}>
+      <Provider store={store} >
+        <LanguageProvider messages={translationMessages} >
           <LocaleToggle />
-        </LanguageProvider>
-      </Provider>,
-    );
-    expect(container.firstChild).toMatchSnapshot();
-  });
+        </LanguageProvider >
+      </Provider >,
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
 
   it('should present the default `en` english language option', () => {
-    const { queryByDisplayValue } = render(
+    const {queryByDisplayValue} = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <LanguageProvider messages={translationMessages}>
+      <Provider store={store} >
+        <LanguageProvider messages={translationMessages} >
           <LocaleToggle />
-        </LanguageProvider>
-      </Provider>,
-    );
-    expect(queryByDisplayValue('en')).toBeInTheDocument();
-  });
+        </LanguageProvider >
+      </Provider >,
+    )
+    expect(queryByDisplayValue('en')).toBeInTheDocument()
+  })
 
   it('should dispatch changeLocale when user selects a new option', () => {
-    const { container } = render(
+    const {container} = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <LanguageProvider messages={translationMessages}>
+      <Provider store={store} >
+        <LanguageProvider messages={translationMessages} >
           <LocaleToggle />
-        </LanguageProvider>
-      </Provider>,
-    );
-    const newLocale = 'de';
-    const select = container.querySelector('select')!;
-    fireEvent.change(select, { target: { value: newLocale } });
-    expect(actions.changeLocale).toHaveBeenCalledWith(newLocale);
-  });
-});
+        </LanguageProvider >
+      </Provider >,
+    )
+    const newLocale = 'de'
+    const select = container.querySelector('select')!
+    fireEvent.change(select, {target: {value: newLocale}})
+    expect(actions.changeLocale).toHaveBeenCalledWith(newLocale)
+  })
+})

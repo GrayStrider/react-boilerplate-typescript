@@ -1,3 +1,3 @@
-import React from 'react';
+import React from 'react'
 
-export default () => <div>My lazy-loaded component</div>;
+export default () => <div >My lazy-loaded component</div >;

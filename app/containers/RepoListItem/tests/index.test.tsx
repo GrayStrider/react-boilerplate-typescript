@@ -2,14 +2,14 @@
  * Test the repo list item
  */
 
-import React from 'react';
-import { getByText, render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
-import { Provider } from 'react-redux';
+import React from 'react'
+import {getByText, render} from '@testing-library/react'
+import {IntlProvider} from 'react-intl'
+import {Provider} from 'react-redux'
 
-import RepoListItem from '../index';
-import configureStore from '@/utils/redux-components/configureStore';
-import history from '../../../utils/history';
+import RepoListItem from '../index'
+import configureStore from '@/utils/redux-components/configureStore'
+import history from '../../../utils/history'
 
 const renderComponent = (item, currentUser) => {
   const initialState = {
@@ -21,25 +21,25 @@ const renderComponent = (item, currentUser) => {
         repos: false,
       },
     },
-  };
+  }
   const store = configureStore(
-    initialState, history);
+    initialState, history)
 
   return render(
     // tslint:disable-next-line: jsx-wrap-multiline
-    <Provider store={store}>
-      <IntlProvider locale="en">
+    <Provider store={store} >
+      <IntlProvider locale='en' >
         <RepoListItem item={item} />
-      </IntlProvider>
-    </Provider>,
-  );
-};
+      </IntlProvider >
+    </Provider >,
+  )
+}
 
-const defaultUser = 'mxstbr';
-const forkUser = 'julienben';
+const defaultUser = 'mxstbr'
+const forkUser = 'julienben'
 
 describe('<RepoListItem />', () => {
-  let item;
+  let item
 
   // Before each test reset the item data for safety
   beforeEach(() => {
@@ -51,42 +51,42 @@ describe('<RepoListItem />', () => {
       name: 'react-boilerplate',
       open_issues_count: 20,
       full_name: 'react-boilerplate/react-boilerplate',
-    };
-  });
+    }
+  })
 
   it('should render a ListItem', () => {
-    const { container } = renderComponent(item, defaultUser);
-    expect(container.firstChild).toMatchSnapshot();
-  });
+    const {container} = renderComponent(item, defaultUser)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 
   it('should not render the current username', () => {
-    const { queryByText } = renderComponent(item, defaultUser);
-    expect(queryByText(item.owner.login)).toBeNull();
-  });
+    const {queryByText} = renderComponent(item, defaultUser)
+    expect(queryByText(item.owner.login)).toBeNull()
+  })
 
   it('should render usernames that are not the current one', () => {
-    const { container } = renderComponent(item, forkUser);
+    const {container} = renderComponent(item, forkUser)
     expect(
       getByText(container, content => content.startsWith(item.owner.login)),
-    ).not.toBeNull();
-  });
+    ).not.toBeNull()
+  })
 
   it('should render the repo name', () => {
-    const { container } = renderComponent(item, defaultUser);
+    const {container} = renderComponent(item, defaultUser)
     expect(
       getByText(container, content => content.endsWith(item.name)),
-    ).not.toBeNull();
-  });
+    ).not.toBeNull()
+  })
 
   it('should render the issue count', () => {
-    const { container } = renderComponent(item, defaultUser);
+    const {container} = renderComponent(item, defaultUser)
     expect(
       getByText(container, item.open_issues_count.toString(10)),
-    ).not.toBeNull();
-  });
+    ).not.toBeNull()
+  })
 
   it('should render the IssueIcon', () => {
-    const { container } = renderComponent(item, defaultUser);
-    expect(container.querySelector('svg')).not.toBeNull();
-  });
-});
+    const {container} = renderComponent(item, defaultUser)
+    expect(container.querySelector('svg')).not.toBeNull()
+  })
+})

@@ -20,7 +20,7 @@ const xmark = require('./helpers/xmark');
  * Every generated component/container is preceded by this
  * @type {string}
  */
-const { BACKUPFILE_EXTENSION } = require('../generators/index');
+const {BACKUPFILE_EXTENSION} = require('../generators/index');
 
 process.chdir(path.join(__dirname, '../generators'));
 
@@ -50,7 +50,7 @@ function prettyStringify(data) {
  * @param {array} failures
  * @returns {Promise<*>}
  */
-function handleResult({ changes, failures }) {
+function handleResult({changes, failures}) {
   return new Promise((resolve, reject) => {
     if (Array.isArray(failures) && failures.length > 0) {
       reject(new Error(prettyStringify(failures)));
@@ -203,7 +203,7 @@ async function restoreModifiedFile(
  * @param {string} type - Plop Action type
  * @returns {Promise<string>} - Relative path to the generated component
  */
-async function generateComponent({ name, memo }) {
+async function generateComponent({name, memo}) {
   const targetFolder = 'components';
   const componentName = `${NAMESPACE}Component${name}`;
   const relativePath = `${targetFolder}/${componentName}`;
@@ -235,7 +235,7 @@ async function generateComponent({ name, memo }) {
  * @param {string} type - Plop Action type
  * @returns {Promise<string>} - Relative path to the generated container
  */
-async function generateContainer({ name, memo }) {
+async function generateContainer({name, memo}) {
   const targetFolder = 'containers';
   const componentName = `${NAMESPACE}Container${name}`;
   const relativePath = `${targetFolder}/${componentName}`;
@@ -295,7 +295,7 @@ async function generateComponents(components) {
 async function generateLanguage(language) {
   // Run generator
   const generatedFiles = await languageGen
-    .runActions({ language, test: true })
+    .runActions({language, test: true})
     .then(handleResult)
     .then(feedbackToUser(`Added new language: '${language}'`))
     .then(changes =>
@@ -375,10 +375,10 @@ async function generateLanguage(language) {
  */
 (async function () {
   await generateComponents([
-    { kind: 'component', name: 'Component', memo: false },
-    { kind: 'component', name: 'MemoizedComponent', memo: true },
-    { kind: 'container', name: 'Container', memo: false },
-    { kind: 'container', name: 'MemoizedContainer', memo: true },
+    {kind: 'component', name: 'Component', memo: false},
+    {kind: 'component', name: 'MemoizedComponent', memo: true},
+    {kind: 'container', name: 'Container', memo: false},
+    {kind: 'container', name: 'MemoizedContainer', memo: true},
   ]).catch(reason => reportErrors(reason));
 
   await generateLanguage('fr').catch(reason => reportErrors(reason));

@@ -1,28 +1,28 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
-import { ConnectedRouter } from 'connected-react-router/immutable';
-import { createMemoryHistory } from 'history';
+import React from 'react'
+import {render} from '@testing-library/react'
+import {Provider} from 'react-redux'
+import {IntlProvider} from 'react-intl'
+import {ConnectedRouter} from 'connected-react-router/immutable'
+import {createMemoryHistory} from 'history'
 
-import Header from '../index';
-import configureStore from '@/utils/redux-components/configureStore';
+import Header from '../index'
+import configureStore from '@/utils/redux-components/configureStore'
 
 describe('<Header />', () => {
-  const history = createMemoryHistory();
-  const store = configureStore({}, history);
+  const history = createMemoryHistory()
+  const store = configureStore({}, history)
 
   it('should render a div', () => {
-    const { container } = render(
+    const {container} = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <ConnectedRouter history={history}>
+      <Provider store={store} >
+        <IntlProvider locale='en' >
+          <ConnectedRouter history={history} >
             <Header />
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
-    );
-    expect(container.firstChild).toMatchSnapshot();
-  });
-});
+          </ConnectedRouter >
+        </IntlProvider >
+      </Provider >,
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
+})

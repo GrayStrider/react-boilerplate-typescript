@@ -4,118 +4,117 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, {useEffect} from 'react'
+import {Helmet} from 'react-helmet'
+import {FormattedMessage} from 'react-intl'
+import {useDispatch, useSelector} from 'react-redux'
+import {createStructuredSelector} from 'reselect'
 
-import { useInjectReducer } from '@/utils/redux-components/injectReducer';
-import { useInjectSaga } from '@/utils/redux-components/injectSaga';
-import { makeSelectError, makeSelectLoading, makeSelectRepos } from '@/containers/App/selectors';
-import H2 from '@/components/H2';
-import ReposList from '@/components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
-import messages from './messages';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-import { ApplicationRootState } from '@/types'
-import { ContainerState, UserData } from '@/containers/App/types'
-import { ContainerState as HomeContainerState } from '@/containers/HomePage/types'
+import {useInjectReducer} from '@/utils/redux-components/injectReducer'
+import {useInjectSaga} from '@/utils/redux-components/injectSaga'
+import {makeSelectError, makeSelectLoading, makeSelectRepos} from '@/containers/App/selectors'
+import H2 from '@/components/H2'
+import ReposList from '@/components/ReposList'
+import AtPrefix from './AtPrefix'
+import CenteredSection from './CenteredSection'
+import Form from './Form'
+import Input from './Input'
+import Section from './Section'
+import messages from './messages'
+import {loadRepos} from '../App/actions'
+import {changeUsername} from './actions'
+import {makeSelectUsername} from './selectors'
+import reducer from './reducer'
+import saga from './saga'
+import {ApplicationRootState} from '@/types'
+import {ContainerState, UserData} from '@/containers/App/types'
+import {ContainerState as HomeContainerState} from '@/containers/HomePage/types'
 
-const key = 'home';
+const key = 'home'
 
 const stateSelector = createStructuredSelector<ApplicationRootState,
   Pick<UserData, 'repos'>
   & HomeContainerState
-  & Pick<ContainerState, 'loading' | 'error'>
-  >({
+  & Pick<ContainerState, 'loading' | 'error'>>({
   repos: makeSelectRepos(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
-});
+})
 
 export default function HomePage() {
-  const { repos, username, loading, error } = useSelector(stateSelector);
+  const {repos, username, loading, error} = useSelector(stateSelector)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // Not gonna declare event types here. No need. any is fine
-  const onChangeUsername = (evt: any) => dispatch(changeUsername(evt.target.value));
+  const onChangeUsername = (evt: any) => dispatch(changeUsername(evt.target.value))
   const onSubmitForm = (evt?: any) => {
     if (evt !== undefined && evt.preventDefault) {
-      evt.preventDefault();
+      evt.preventDefault()
     }
     if (!username) {
-      return;
+      return
     }
-    dispatch(loadRepos());
-  };
+    dispatch(loadRepos())
+  }
 
-  useInjectReducer({ key: key, reducer: reducer });
-  useInjectSaga({ key: key, saga: saga });
+  useInjectReducer({key: key, reducer: reducer})
+  useInjectSaga({key: key, saga: saga})
 
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
     if (username && username.trim().length > 0) {
-      onSubmitForm();
+      onSubmitForm()
     }
-  }, []);
+  }, [])
 
   const reposListProps = {
     loading: loading,
     error: error,
     repos: repos,
-  };
+  }
 
   return (
-    <article>
-      <Helmet>
-        <title>Home Page</title>
+    <article >
+      <Helmet >
+        <title >Home Page</title >
         <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
+          name='description'
+          content='A React.js Boilerplate application homepage'
         />
-      </Helmet>
-      <div>
-        <CenteredSection>
-          <H2>
+      </Helmet >
+      <div >
+        <CenteredSection >
+          <H2 >
             <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
-          <p>
+          </H2 >
+          <p >
             <FormattedMessage {...messages.startProjectMessage} />
-          </p>
-        </CenteredSection>
-        <Section>
-          <H2>
+          </p >
+        </CenteredSection >
+        <Section >
+          <H2 >
             <FormattedMessage {...messages.trymeHeader} />
-          </H2>
-          <Form onSubmit={onSubmitForm}>
-            <label htmlFor="username">
+          </H2 >
+          <Form onSubmit={onSubmitForm} >
+            <label htmlFor='username' >
               <FormattedMessage {...messages.trymeMessage} />
-              <AtPrefix>
+              <AtPrefix >
                 <FormattedMessage {...messages.trymeAtPrefix} />
-              </AtPrefix>
+              </AtPrefix >
               <Input
-                id="username"
-                type="text"
-                placeholder="mxstbr"
+                id='username'
+                type='text'
+                placeholder='mxstbr'
                 value={username}
                 onChange={onChangeUsername}
               />
-            </label>
-          </Form>
+            </label >
+          </Form >
           <ReposList {...reposListProps} />
-        </Section>
-      </div>
-    </article>
-  );
+        </Section >
+      </div >
+    </article >
+  )
 }

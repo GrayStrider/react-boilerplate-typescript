@@ -1,4 +1,4 @@
-import * as styledComponents from 'styled-components';
+import * as styledComponents from 'styled-components'
 
 // theme.ts
 // your theme variables
@@ -14,16 +14,14 @@ export const theme = {
     componentBackground: '#fff',
     componentBackgroundSecondary: '#fff',
   },
-};
+}
 const {
   default: styled,
   css,
   createGlobalStyle,
   keyframes,
   ThemeProvider,
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<
-  IThemeInterface
->;
+} = styledComponents as styledComponents.ThemedStyledComponentsModule<IThemeInterface>
 
-export { css, createGlobalStyle, keyframes, ThemeProvider };
-export default styled;
+export {css, createGlobalStyle, keyframes, ThemeProvider}
+export default styled

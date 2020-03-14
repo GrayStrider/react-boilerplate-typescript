@@ -1,20 +1,20 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
+import React from 'react'
+import {render} from '@testing-library/react'
+import {IntlProvider} from 'react-intl'
 
-import FeaturePage from '../index';
+import FeaturePage from '../index'
 
 describe('<FeaturePage />', () => {
   it('should render its heading', () => {
     const {
-      container: { firstChild },
+      container: {firstChild},
     } = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <IntlProvider locale="en">
+      <IntlProvider locale='en' >
         <FeaturePage />
-      </IntlProvider>,
-    );
+      </IntlProvider >,
+    )
 
-    expect(firstChild).toMatchSnapshot();
-  });
-});
+    expect(firstChild).toMatchSnapshot()
+  })
+})

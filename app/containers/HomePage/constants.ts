@@ -13,4 +13,4 @@ enum ActionTypes {
   CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME',
 }
 
-export default ActionTypes;
+export default ActionTypes

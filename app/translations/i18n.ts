@@ -7,40 +7,40 @@
  *   script `extract-intl`, and must use CommonJS module syntax
  *   You CANNOT use import/export in this file.
  */
-const addLocaleData = require('react-intl').addLocaleData;
-const enLocaleData = require('react-intl/locale-data/en');
-const deLocaleData = require('react-intl/locale-data/de');
+const addLocaleData = require('react-intl').addLocaleData
+const enLocaleData = require('react-intl/locale-data/en')
+const deLocaleData = require('react-intl/locale-data/de')
 
-const enTranslationMessages = require('app/translations/en.json');
-const deTranslationMessages = require('app/translations/de.json');
+const enTranslationMessages = require('app/translations/en.json')
+const deTranslationMessages = require('app/translations/de.json')
 
-addLocaleData(enLocaleData);
-addLocaleData(deLocaleData);
+addLocaleData(enLocaleData)
+addLocaleData(deLocaleData)
 
-export const DEFAULT_LOCALE = 'en';
+export const DEFAULT_LOCALE = 'en'
 
 // prettier-ignore
 export const appLocales = [
   'en',
   'de',
-];
+]
 
 export const formatTranslationMessages = (locale, messages) => {
   const defaultFormattedMessages =
     locale !== DEFAULT_LOCALE
       ? formatTranslationMessages(DEFAULT_LOCALE, enTranslationMessages)
-      : {};
+      : {}
   const flattenFormattedMessages = (formattedMessages, key) => {
     const formattedMessage =
       !messages[key] && locale !== DEFAULT_LOCALE
         ? defaultFormattedMessages[key]
-        : messages[key];
-    return {...formattedMessages,  [key]: formattedMessage};
-  };
-  return Object.keys(messages).reduce(flattenFormattedMessages, {});
-};
+        : messages[key]
+    return {...formattedMessages, [key]: formattedMessage}
+  }
+  return Object.keys(messages).reduce(flattenFormattedMessages, {})
+}
 
 export const translationMessages = {
   en: formatTranslationMessages('en', enTranslationMessages),
   de: formatTranslationMessages('de', deTranslationMessages),
-};
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const shell = require('shelljs');
-const { exec } = require('child_process');
+const {exec} = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
@@ -106,7 +106,7 @@ function installDeps() {
     if (err || compareVersions(nodeVersion, '8.10.0') === -1) {
       installDepsCallback(
         err ||
-          `[ERROR] You need Node.js v8.10 or above but you have ${nodeVersion}`,
+        `[ERROR] You need Node.js v8.10 or above but you have ${nodeVersion}`,
       );
     } else {
       exec('npm --version', (err2, stdout2) => {
@@ -114,7 +114,7 @@ function installDeps() {
         if (err2 || compareVersions(npmVersion, '5.0.0') === -1) {
           installDepsCallback(
             err2 ||
-              `[ERROR] You need npm v5 or above but you have v${npmVersion}`,
+            `[ERROR] You need npm v5 or above but you have v${npmVersion}`,
           );
         } else {
           exec('npm install', addCheckMark.bind(null, installDepsCallback));
@@ -149,6 +149,7 @@ function installDepsCallback(error) {
     endProcess();
   });
 }
+
 /**
  * Function which ends setup process
  */

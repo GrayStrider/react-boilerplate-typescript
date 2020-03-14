@@ -1,6 +1,6 @@
-import { ActionType } from 'typesafe-actions';
-import * as actions from './actions';
-import { ApplicationRootState } from '@/types';
+import {ActionType} from 'typesafe-actions'
+import * as actions from './actions'
+import {ApplicationRootState} from '@/types'
 
 /* --- STATE --- */
 
@@ -18,4 +18,4 @@ type RootState = ApplicationRootState;
 type ContainerState = HomeState;
 type ContainerActions = AppActions;
 
-export { RootState, ContainerState, ContainerActions };
+export {RootState, ContainerState, ContainerActions}

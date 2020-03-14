@@ -1,8 +1,8 @@
-const { pathsToModuleNameMapper } = require('ts-jest/utils')
+const {pathsToModuleNameMapper} = require('ts-jest/utils')
 const fs = require('fs')
-const { parse } = require('comment-json')
+const {parse} = require('comment-json')
 const tsconfig = fs.readFileSync('tsconfig.json', 'utf8')
-const { compilerOptions: {paths} } = parse(tsconfig, null, true)
+const {compilerOptions: {paths}} = parse(tsconfig, null, true)
 
 module.exports = {
   preset: 'ts-jest/presets/js-with-babel',
@@ -26,7 +26,7 @@ module.exports = {
       '<rootDir>/internals/mocks/cssModule.js',
     '.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/internals/mocks/image.js',
-    ...pathsToModuleNameMapper(paths, { prefix: '<rootDir>/' }),
+    ...pathsToModuleNameMapper(paths, {prefix: '<rootDir>/'}),
   },
   setupFilesAfterEnv: [
     '<rootDir>/internals/testing/test-bundler.js',

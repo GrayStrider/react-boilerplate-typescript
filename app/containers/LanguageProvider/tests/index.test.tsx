@@ -1,13 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { FormattedMessage, defineMessages } from 'react-intl';
-import { Provider } from 'react-redux';
+import React from 'react'
+import {render} from '@testing-library/react'
+import {FormattedMessage, defineMessages} from 'react-intl'
+import {Provider} from 'react-redux'
 
-import LanguageProvider from '../index';
-import configureStore from '@/utils/redux-components/configureStore';
+import LanguageProvider from '../index'
+import configureStore from '@/utils/redux-components/configureStore'
 
-import { translationMessages } from 'app/translations/i18n';
-import history from '../../../utils/history';
+import {translationMessages} from 'app/translations/i18n'
+import history from '../../../utils/history'
 
 const messages = defineMessages({
   someMessage: {
@@ -15,40 +15,40 @@ const messages = defineMessages({
     defaultMessage: 'This is some default message',
     en: 'This is some en message',
   },
-});
+})
 
 describe('<LanguageProvider />', () => {
-  let store;
+  let store
 
   beforeEach(() => {
-    store = configureStore({}, history);
-  });
+    store = configureStore({}, history)
+  })
 
   it('should render its children', () => {
-    const text = 'Test';
-    const children = <h1>{text}</h1>;
-    const { queryByText } = render(
+    const text = 'Test'
+    const children = <h1 >{text}</h1 >
+    const {queryByText} = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <LanguageProvider messages={messages}>
+      <Provider store={store} >
+        <LanguageProvider messages={messages} >
           {children}
-        </LanguageProvider>
-      </Provider>,
-    );
-    expect(queryByText(text)).toBeInTheDocument();
-  });
+        </LanguageProvider >
+      </Provider >,
+    )
+    expect(queryByText(text)).toBeInTheDocument()
+  })
 
   it('should render the default language messages', () => {
-    const { queryByText } = render(
+    const {queryByText} = render(
       // tslint:disable-next-line: jsx-wrap-multiline
-      <Provider store={store}>
-        <LanguageProvider messages={translationMessages}>
+      <Provider store={store} >
+        <LanguageProvider messages={translationMessages} >
           <FormattedMessage {...messages.someMessage} />
-        </LanguageProvider>
-      </Provider>,
-    );
+        </LanguageProvider >
+      </Provider >,
+    )
     expect(
       queryByText(messages.someMessage.defaultMessage),
-    ).toBeInTheDocument();
-  });
-});
+    ).toBeInTheDocument()
+  })
+})
