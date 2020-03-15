@@ -6,7 +6,7 @@ import {ConnectedRouter} from 'connected-react-router'
 import history from '@/utils/history'
 import {store} from '@/store'
 
-export const App_: FC<{ messages?: any, Component?: FC }> =
+const AppWrapper: FC<{ messages?: any, Component?: FC }> =
 	({
 		 messages = translationMessages,
 		 Component = require ('./containers/App').default,
@@ -18,3 +18,5 @@ export const App_: FC<{ messages?: any, Component?: FC }> =
 				</ConnectedRouter >
 			</LanguageProvider >
 		</Provider >
+
+export default AppWrapper

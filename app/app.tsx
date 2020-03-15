@@ -8,7 +8,7 @@ import App from '@/containers/App'
 // import '!file-loader?name=[name].[ext]!./static/images/favicon.ico'
 // import 'file-loader?name=.htaccess!./.htaccess'
 import {translationMessages} from '@/translations/i18n'
-import {App_} from '@/App2'
+import AppWrapper from '@/wrapper'
 
 const openSansObserver = new FontFaceObserver ('Open Sans', {})
 openSansObserver.load ().then (() => {
@@ -20,7 +20,7 @@ const MOUNT_NODE = document.getElementById ('app') as HTMLElement
 
 const render = (messages: any, Component = App) => {
   ReactDOM.render (
-    <App_ />,
+    <AppWrapper/>,
     MOUNT_NODE,
   )
 }
