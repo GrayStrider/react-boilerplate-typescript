@@ -1,1 +1,6 @@
-extends: "@strider/utils-ts/.eslintrc"
+extends:
+  - "@strider/utils-ts/.eslintrc"
+  - 'plugin:redux-saga'
+  - 'plugin:react'
+  - 'plugin:react-hooks'
+  - 'plugin:jsx-a11y']
