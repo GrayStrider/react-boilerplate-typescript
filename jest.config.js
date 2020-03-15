@@ -35,7 +35,7 @@ module.exports = {
   ],
   testRegex: 'tests/.*\\.(test|spec)\\.(js|ts(x?))$',
   transform: {
-    '^.+\\.(ts(x?)|js)$': 'ts-jest',
+    '^.+\\.(ts(x?))$': 'ts-jest',
   },
   snapshotSerializers: [],
   watchPlugins: [
