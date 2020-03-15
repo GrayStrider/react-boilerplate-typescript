@@ -2,10 +2,10 @@
  * Asynchronously loads the component for HomePage
  */
 
-import * as React from 'react'
+import React from 'react'
 import loadable from '@/utils/loadable'
 import LoadingIndicator from '@/components/LoadingIndicator'
 
-export default loadable (() => import('./index'), {
+export default loadable (() => import('app/containers/pages/NotFoundPage/index'), {
   fallback: <LoadingIndicator />,
 })
