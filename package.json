@@ -49,8 +49,6 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
-    "@strider/utils-ts": "0.0.1",
-
     "express": "4.17.1",
     "compression": "1.7.4",
     "minimist": "1.2.0",
